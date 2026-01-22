@@ -32,7 +32,7 @@ export function CardScannerSection() {
   const particleCanvasRef = useRef<HTMLCanvasElement>(null);
   const scannerCanvasRef = useRef<HTMLCanvasElement>(null);
   
-  const [position, setPosition] = useState(0);
+  const [position, setPosition] = useState(-2760);
   const [isScanning, setIsScanning] = useState(false);
   const [asciiContents, setAsciiContents] = useState<string[]>([]);
   
@@ -58,8 +58,8 @@ export function CardScannerSection() {
     const moveAmount = (speed * delta) / 1000;
     
     setPosition(prev => {
-      const newPos = prev - moveAmount;
-      return newPos < -3000 ? 0 : newPos;
+      const newPos = prev + moveAmount;
+      return newPos >= 0 ? -2760 : newPos;
     });
   });
 
@@ -121,7 +121,7 @@ export function CardScannerSection() {
 
     const particles: any[] = [];
     const maxParticles = 150; // Reduced count
-    const centerX = w / 2;
+    const centerX = w * 0.2;
 
     const createParticle = () => ({
       x: centerX + (Math.random() - 0.5) * 4,
@@ -169,7 +169,7 @@ export function CardScannerSection() {
   useEffect(() => {
     if (!isInView) return;
     const interval = setInterval(() => {
-      const scannerX = window.innerWidth / 2;
+      const scannerX = window.innerWidth * 0.2;
       const cards = document.querySelectorAll(".scanner-card-wrapper");
       let active = false;
       cards.forEach(card => {
@@ -227,7 +227,7 @@ interface CardItemProps {
 
 const CardItem: React.FC<CardItemProps> = ({ project, asciiContent, scrollerPosition, index }) => {
   // Use CSS variables for the clip path reveal - much faster than JS-based getBoundingClientRect every frame
-  const scannerX = typeof window !== 'undefined' ? window.innerWidth / 2 : 800;
+  const scannerX = typeof window !== 'undefined' ? window.innerWidth * 0.2 : 300;
   const cardWidth = 380; // Fixed width from CSS
   const cardGap = 80; // Fixed gap from CSS
   const initialOffset = 100; // scroller padding
