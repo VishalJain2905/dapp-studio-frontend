@@ -1,0 +1,208 @@
+/* ====== CARD SCANNER SECTION ====== */
+.card-scanner-section {
+  position: relative;
+  width: 100%;
+  height: 80vh; /* Controlled height for the section */
+  background: #000000 !important;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 0;
+  opacity: 1; /* Resetting the opacity error from user edit */
+}
+
+.scanner-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background Particle Canvas */
+#particleCanvas {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100vw;
+  height: 350px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Scanner Reveal Bar */
+.scanner-bar-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 4px;
+  height: 450px;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.scanner-bar {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  box-shadow: 
+    0 0 20px rgba(255, 255, 255, 0.4),
+    0 0 40px rgba(255, 255, 255, 0.2);
+  animation: scanPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes scanPulse {
+  0% { opacity: 0.8; transform: scaleY(1); }
+  100% { opacity: 1; transform: scaleY(1.1); }
+}
+
+#scannerCanvas {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100vw;
+  height: 450px;
+  z-index: 25;
+  pointer-events: none;
+}
+
+/* Card Stream Layout */
+.card-stream-wrapper {
+  position: absolute;
+  width: 100vw;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  overflow: visible;
+  z-index: 10;
+}
+
+.card-scroller {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  padding: 0 100px;
+  will-change: transform;
+}
+
+/* Card Structure */
+.scanner-card-wrapper {
+  position: relative;
+  width: 380px;
+  height: 240px;
+  flex-shrink: 0;
+}
+
+.scanner-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+/* Normal Card (Visible on Right/Left) */
+.card-face-normal {
+  background: linear-gradient(135deg, #0a0a0a 0%, #000000 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex; flex-direction: column; padding: 24px; z-index: 2;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+}
+
+/* ASCII/Code Card (Revealed in Center) */
+.card-face-ascii {
+  background: rgba(5, 5, 5, 0.98);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  z-index: 1; display: flex; align-items: center; justify-content: center;
+}
+
+.ascii-code-content {
+  color: rgba(255, 255, 255, 0.6);
+  font-family: 'Courier New', monospace;
+  font-size: 10px; line-height: 12px; white-space: pre;
+  width: 100%; height: 100%; padding: 12px; overflow: hidden;
+  text-align: left; animation: glitch-text 0.15s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-text {
+  0% { opacity: 0.9; }
+  100% { opacity: 1; }
+}
+
+/* Card Content Details */
+.card-tag {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  color: #888888;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.card-title-main {
+  font-size: 22px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.card-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  font-size: 10px;
+  color: #aaaaaa;
+  width: fit-content;
+}
+
+.card-status-dot {
+  width: 5px;
+  height: 5px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #ffffff;
+}
+
+.card-bottom-row {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.card-hash {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.scan-line-reveal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  pointer-events: none;
+  z-index: 5;
+}

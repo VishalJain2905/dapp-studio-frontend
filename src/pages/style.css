@@ -1,0 +1,58 @@
+/* ====== SIMPLE PAGE LAYOUT ====== */
+
+/* Main wrapper */
+.card-wrap {
+  position: relative;
+  width: 100%;
+}
+
+/* ====== HERO+TECH CARD - STICKY AT TOP ====== */
+.card.card-hero-tech {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+/* ====== OTHER CARDS - NORMAL SCROLL ====== */
+.card {
+  position: relative;
+  width: 100%;
+}
+
+/* ====== INNER CONTENT ====== */
+.cards_wrap__card-stick {
+  position: relative;
+  width: 100%;
+}
+
+/* ====== STACKING ORDER ====== */
+.card-hero-tech { 
+  z-index: 1; 
+}
+
+/* All other cards should be solid and scroll over the hero */
+.card:not(.card-hero-tech) {
+  position: relative;
+  background-color: #000;
+  z-index: 10;
+}
+
+.card-what { z-index: 11; }
+.card-work { z-index: 12; }
+.card-scanner { z-index: 13; }
+.card-process { z-index: 14; }
+.card-benefits { z-index: 15; }
+.card-pricing { z-index: 16; }
+.card-testimonials { z-index: 17; }
+.card-faq { z-index: 100; }
+
+/* ====== FAQ - LAST SECTION ====== */
+.card.card-faq {
+  min-height: auto;
+  overflow: visible;
+}
+
+.card.card-faq .cards_wrap__card-stick.last {
+  height: auto;
+}

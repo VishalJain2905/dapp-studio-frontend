@@ -1,0 +1,161 @@
+/* ==========================================
+   BENEFITS SECTION - TEXT GRID REDESIGN
+   ========================================== */
+
+/* === SECTION === */
+.benefits-section {
+  background-color: #000000;
+  position: relative;
+  min-height: 800px;
+  padding: 80px 20px;
+  overflow: hidden;
+  color: white;
+}
+
+@media (min-width: 1024px) {
+  .benefits-section {
+    padding: 120px 80px;
+  }
+}
+
+.benefits-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+/* === HEADER / BRANDING COL === */
+.benefits-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+
+@media (min-width: 768px) {
+  .benefits-header {
+    height: 100%;
+  }
+}
+
+.benefits-brand-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.benefit-globe-icon {
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.benefit-globe-svg {
+  width: 24px;
+  height: 24px;
+}
+
+.benefit-brand-logo {
+  font-family: 'Aeonik', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+}
+
+.benefit-est-text {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #909090;
+  margin-left: 8px;
+  margin-top: 4px;
+}
+
+.benefit-main-title {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.1;
+  max-width: 600px;
+}
+
+@media (min-width: 1024px) {
+  .benefit-main-title {
+    font-size: 64px;
+    position: absolute; /* Float title if needed, or keep in grid */
+    top: 0;
+    left: 0;
+    display: none; /* Hiding main title in grid layout if we replicate the reference strictly which has only the detailed points */
+  }
+}
+
+/* === GRID LAYOUT === */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 60px;
+}
+
+@media (min-width: 768px) {
+  .benefits-grid {
+    grid-template-columns: 200px 1fr 1fr; /* Branding Col | Content Col 1 | Content Col 2 */
+    gap: 40px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .benefits-grid {
+    grid-template-columns: 300px 1fr 1fr;
+    gap: 80px;
+  }
+}
+
+/* === TEXT ITEM STYLES === */
+.benefit-item {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.benefit-item-title {
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: white;
+}
+
+@media (min-width: 1024px) {
+  .benefit-item-title {
+    font-size: 40px;
+    max-width: 400px;
+  }
+}
+
+.benefit-separator {
+  width: 40px;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.benefit-item-desc {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #cccccc;
+  max-width: 350px;
+}
+
+/* === BACKGROUND === */
+.benefits-bg-gradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 30%, rgba(20, 20, 50, 0.4), black 60%);
+  z-index: 0;
+  pointer-events: none;
+}

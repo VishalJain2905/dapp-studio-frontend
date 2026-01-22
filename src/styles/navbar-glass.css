@@ -1,0 +1,180 @@
+/* NAVBAR GLASS STYLES */
+.navbar-glass { 
+  position: relative;
+  gap: 32px !important; /* Slightly increased gap for spacious look */
+  padding: 10px 26px !important; /* Taller and wider padding */
+  border-radius: 100px !important;
+
+  /* True glass effect - more transparent */
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+
+  /* Glass border */
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  
+  /* Subtle shadow for depth */
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+
+  transition: all 0.3s ease !important;
+  
+  pointer-events: auto !important;
+}
+
+.get {
+  pointer-events: auto !important;
+}
+
+/* Remove the old notch/clip-path effect */
+.navbar-glass::before {
+  display: none;
+}
+
+/* Light section variant */
+.navbar-glass.light {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.hero-section nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+
+/* Remove navbar hover effects - keep static glass background */
+
+/* Nav link styles with glass effect */
+.nav-link {
+  position: relative;
+  padding: 4px 8px;
+  /* px-2 py-1 */
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 16px;
+  letter-spacing: -0.32px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  z-index: 2;
+}
+
+/* Animated underline effect */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Light variant text colors */
+.nav-link.light {
+  color: #000000;
+}
+
+.nav-link.light::after {
+  background-color: #000000;
+}
+
+/* Dark variant text colors */
+.nav-link.dark {
+  color: #ffffff;
+}
+
+.nav-link.dark::after {
+  background-color: #ffffff;
+}
+
+/* Keep minimal nav link hover - only underline effect */
+
+/* New Spotlight Underline Effect */
+.nav-spotlight {
+  position: relative;
+}
+
+/* The Glowing Underline */
+.nav-spotlight::after {
+  content: '';
+  position: absolute;
+  bottom: -4px !important; /* Slightly below text */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px !important;
+  background-color: #ffffff;
+  
+  /* The Blue Spotlight GLOW */
+  box-shadow: 
+    0 -2px 10px rgba(0, 163, 255, 0.8), /* Upward glow */
+    0 0 5px rgba(0, 163, 255, 1),      /* Core glow */
+    0 2px 8px rgba(0, 163, 255, 0.5);  /* Lower glow */
+    
+  transition: width 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  border-radius: 2px;
+  z-index: 10;
+}
+
+/* Hover State */
+.nav-spotlight:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+
+/* Optional: Add a subtle bottom light flare to the text itself */
+.nav-spotlight:hover {
+  text-shadow: 0 10px 20px rgba(0, 163, 255, 0.6);
+  color: #ffffff !important;
+}
+
+
+.nav-spotlight::before {
+  display: none;
+}
+
+/* Glass pill wrapper for logo and button - same as navbar glass */
+.glass-pill {
+  position: relative;
+  padding: 8px 18px !important;
+  border-radius: 100px !important;
+
+  /* Same glass effect as navbar */
+  background: rgba(10, 10, 10, 0.85) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5) !important;
+  
+  transition: all 0.3s ease !important;
+  display: inline-flex;
+  align-items: center;
+  pointer-events: auto !important;
+}
+
+/* Glass pill for button - white version like "Get in Touch" */
+.glass-pill-white {
+  position: relative;
+  padding: 8px 18px !important;
+  border-radius: 100px !important;
+
+  /* White glass effect */
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.3) !important;
+  
+  transition: all 0.3s ease !important;
+  display: inline-flex;
+  align-items: center;
+  pointer-events: auto !important;
+}

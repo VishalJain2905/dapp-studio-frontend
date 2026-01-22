@@ -1,0 +1,391 @@
+/* ==========================================
+   BENEFITS SECTION - EXTERNAL CSS
+   ========================================== */
+
+/* === SECTION === */
+.benefits-section {
+  background-color: #000000;
+  position: relative;
+  min-height: 900px;
+  padding: 48px 0;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .benefits-section {
+    padding: 80px 0;
+  }
+}
+
+/* === BACKGROUND CONTAINER === */
+.benefits-background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* === TEXTURE OVERLAY === */
+.benefits-texture-overlay {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.benefits-texture-inner {
+  position: absolute;
+  mix-blend-mode: overlay;
+  background-size: 512px 512px;
+  background-position: center center;
+  background-repeat: repeat;
+  width: 200%;
+  height: 200%;
+  left: -50%;
+  top: -50%;
+}
+
+/* === CONTENT CONTAINER === */
+.benefits-content {
+  position: relative;
+  z-index: 10;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+@media (min-width: 768px) {
+  .benefits-content {
+    padding: 0 80px;
+  }
+}
+
+/* === SECTION TITLE === */
+.benefits-title {
+  color: white;
+  font-size: 32px;
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .benefits-title {
+    font-size: 60px;
+    margin-bottom: 64px;
+    text-align: left;
+  }
+}
+
+/* === CARDS GRID === */
+.benefits-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .benefits-cards-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 19px 19px;
+    row-gap: 40px;
+  }
+}
+
+/* ==========================================
+   BENEFIT CARD STYLES
+   ========================================== */
+
+.benefit-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 212px;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  
+  /* Subtle dark glass background */
+  background: rgba(45, 52, 58, 0.3);
+  
+  /* Subtle glass blur effect */
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  
+  /* Minimal depth */
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.1) inset,
+    0 2px 4px rgba(0, 0, 0, 0.2);
+  
+  border: none;
+  transition: all 0.3s ease;
+}
+
+/* Main card border with notched corners - Top-right and Bottom-left only */
+.benefit-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% 100%,
+    12px 100%,
+    0 calc(100% - 12px)
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Medium opacity variant */
+.benefit-card.medium-opacity {
+  background: rgba(45, 52, 58, 0.2);
+}
+
+/* Hover effect */
+.benefit-card:hover {
+  transform: translateY(-2px);
+  background: rgba(50, 57, 63, 0.35);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.15) inset,
+    0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.benefit-card:hover::before {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Title section with border effect and light black glass */
+.benefit-card-title {
+  position: relative;
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  box-shadow:
+    0 0.5px 0 rgba(255, 255, 255, 0.08) inset,
+    0 -0.5px 0 rgba(0, 0, 0, 0.08) inset,
+    0 2px 6px rgba(0, 0, 0, 0.15);
+  border-radius: 14px;
+  z-index: 3;
+}
+
+/* Title border with notched corners */
+.benefit-card-title::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 10px) 0,
+    100% 10px,
+    100% 100%,
+    10px 100%,
+    0 calc(100% - 10px)
+  );
+  pointer-events: none;
+}
+
+/* Title text */
+.benefit-card-title-text {
+  font-weight: 600;
+  line-height: 100.02%;
+  font-size: 20px;
+  color: white;
+  position: relative;
+  z-index: 10;
+  letter-spacing: -0.01em;
+}
+
+/* Description section */
+.benefit-card-description {
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  height: 146px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Description text */
+.benefit-card-description-text {
+  line-height: 22.4px;
+  color: #cccccc;
+  font-size: 14px;
+  letter-spacing: -0.32px;
+}
+
+/* ==========================================
+   LIGHT EFFECTS
+   ========================================== */
+
+.benefits-light-container {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Large radial glow */
+.benefits-radial-glow {
+  position: absolute;
+  left: 50%;
+  width: 1102.24px;
+  height: 1102.24px;
+  top: 0;
+  transform: translateX(-50%);
+}
+
+.benefits-radial-glow-inner {
+  position: absolute;
+  inset: -36.29%;
+}
+
+.benefits-radial-glow-inner svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Central bright light */
+.benefits-central-light {
+  position: absolute;
+  left: 50%;
+  width: 742.645px;
+  height: 742.645px;
+  top: 180px;
+  transform: translateX(-50%);
+}
+
+.benefits-central-light-inner {
+  position: absolute;
+  inset: -4.51%;
+}
+
+.benefits-central-light-inner svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Dark circle overlay */
+.benefits-dark-circle {
+  position: absolute;
+  left: 50%;
+  width: 742.645px;
+  height: 742.645px;
+  top: 180px;
+  transform: translateX(-50%);
+}
+
+.benefits-dark-circle svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Light waves container */
+.benefits-light-waves {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+}
+
+/* Wave elements */
+.benefits-wave {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.benefits-wave-inner {
+  flex: none;
+}
+
+.benefits-wave-content {
+  position: relative;
+  opacity: 0.2;
+}
+
+.benefits-wave-content-inner {
+  position: absolute;
+}
+
+.benefits-wave-content-inner svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Central wave */
+.benefits-central-wave {
+  position: absolute;
+  height: 548px;
+  left: 50%;
+  opacity: 0.2;
+  top: 200px;
+  transform: translateX(-50%);
+  width: 496px;
+}
+
+.benefits-central-wave-inner {
+  position: absolute;
+  inset: -10.68% -11.79%;
+}
+
+.benefits-central-wave-inner svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Small accent waves */
+.benefits-accent-wave {
+  position: absolute;
+  display: flex;
+  height: 506.875px;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(-50%);
+  width: 449.457px;
+}
+
+.benefits-accent-wave-inner {
+  flex: none;
+  transform: rotate(20.303deg);
+}
+
+.benefits-accent-wave-content {
+  height: 420.741px;
+  opacity: 0.2;
+  position: relative;
+  width: 323.568px;
+}
+
+.benefits-accent-wave-svg {
+  position: absolute;
+  inset: -11.19% -14.56%;
+}
+
+.benefits-accent-wave-svg svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
