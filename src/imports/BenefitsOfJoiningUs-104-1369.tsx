@@ -7,7 +7,7 @@ type BackgroundImageAndTextProps = {
 function BackgroundImageAndText({ text }: BackgroundImageAndTextProps) {
   return (
     <div className="absolute bg-[rgba(255,255,255,0.1)] h-[66px] left-0 overflow-clip rounded-[14px] top-0 w-[360px]">
-      <p className="absolute font-['Neue_Haas_Grotesk_Display_Pro:55_Roman',sans-serif] leading-[100.02%] left-[86px] not-italic text-[20px] text-nowrap text-white top-[calc(50%-12px)]">{text}</p>
+      <p className="absolute font-display leading-[100.02%] left-[86px] not-italic text-[20px] text-nowrap text-white top-[calc(50%-12px)]">{text}</p>
     </div>
   );
 }
@@ -173,7 +173,7 @@ function Container() {
 function Card() {
   return (
     <div className="absolute bg-[rgba(0,0,0,0.4)] h-[212px] left-[81px] overflow-clip rounded-[20px] top-[364px] w-[360px]" data-name="Card">
-      <div className="absolute flex flex-col font-['Poppins:Regular',sans-serif] justify-center leading-[22.4px] left-[30px] not-italic text-[#ccc] text-[14px] top-[141px] tracking-[-0.32px] translate-y-[-50%] w-[300px]">
+      <div className="absolute flex flex-col font-body justify-center leading-[22.4px] left-[30px] not-italic text-[#ccc] text-[14px] top-[141px] tracking-[-0.32px] translate-y-[-50%] w-[300px]">
         <p className="mb-0">{`We build tools, dashboards, and automated `}</p>
         <p>systems that streamline your daily operations, helping you and your team work faster and smarter.</p>
       </div>
@@ -185,7 +185,7 @@ function Card() {
 function Frame() {
   return (
     <div className="absolute bg-[rgba(255,255,255,0.1)] h-[66px] left-0 overflow-clip rounded-[14px] top-0 w-[360px]">
-      <p className="absolute font-['Neue_Haas_Grotesk_Display_Pro:55_Roman',sans-serif] leading-[100.02%] left-[calc(50%-62px)] not-italic text-[20px] text-nowrap text-white top-[calc(50%-12px)]">Cost Reduction</p>
+      <p className="absolute font-display leading-[100.02%] left-[calc(50%-62px)] not-italic text-[20px] text-nowrap text-white top-[calc(50%-12px)]">Cost Reduction</p>
     </div>
   );
 }
@@ -193,7 +193,7 @@ function Frame() {
 function Card1() {
   return (
     <div className="absolute bg-[rgba(0,0,0,0.4)] h-[212px] left-[81px] overflow-clip rounded-[20px] top-[616px] w-[360px]" data-name="Card">
-      <div className="absolute flex flex-col font-['Poppins:Regular',sans-serif] justify-center leading-[0] left-[30px] not-italic text-[#ccc] text-[14px] top-[141px] tracking-[-0.32px] translate-y-[-50%] w-[300px]">
+      <div className="absolute flex flex-col font-body justify-center leading-[0] left-[30px] not-italic text-[#ccc] text-[14px] top-[141px] tracking-[-0.32px] translate-y-[-50%] w-[300px]">
         <p className="leading-[22.4px]">Our development approach focuses on clean, efficient code, minimizing overhead, reducing technical debt, and keeping maintenance costs low.</p>
       </div>
       <Frame />
@@ -204,7 +204,7 @@ function Card1() {
 function Card2() {
   return (
     <div className="absolute bg-[rgba(0,0,0,0.2)] h-[212px] left-[460px] overflow-clip rounded-[20px] top-[616px] w-[360px]" data-name="Card">
-      <div className="absolute flex flex-col font-['Poppins:Regular',sans-serif] justify-center leading-[22.4px] left-[30px] not-italic text-[#ccc] text-[14px] top-[141px] tracking-[-0.32px] translate-y-[-50%] w-[300px]">
+      <div className="absolute flex flex-col font-body justify-center leading-[22.4px] left-[30px] not-italic text-[#ccc] text-[14px] top-[141px] tracking-[-0.32px] translate-y-[-50%] w-[300px]">
         <p className="mb-0">{`Custom development that actually delivers `}</p>
         <p className="mb-0">{`from clean UI to scalable Web3 infrastructure, `}</p>
         <p>we turn ideas into high-performing products</p>
@@ -217,7 +217,7 @@ function Card2() {
 function Frame1() {
   return (
     <div className="absolute bg-[rgba(255,255,255,0.1)] h-[66px] left-0 overflow-clip rounded-[14px] top-0 w-[360px]">
-      <p className="absolute font-['Neue_Haas_Grotesk_Display_Pro:55_Roman',sans-serif] leading-[100.02%] left-[calc(50%-82px)] not-italic text-[20px] text-nowrap text-white top-[calc(50%-12px)]">{`Scalablity & Growth`}</p>
+      <p className="absolute font-display leading-[100.02%] left-[calc(50%-82px)] not-italic text-[20px] text-nowrap text-white top-[calc(50%-12px)]">{`Scalablity & Growth`}</p>
     </div>
   );
 }
@@ -225,7 +225,7 @@ function Frame1() {
 function Card3() {
   return (
     <div className="absolute bg-[rgba(0,0,0,0.4)] h-[212px] left-[839px] overflow-clip rounded-[20px] top-[616px] w-[360px]" data-name="Card">
-      <div className="absolute flex flex-col font-['Poppins:Regular',sans-serif] justify-center leading-[0] left-[30px] not-italic text-[#ccc] text-[14px] top-[141px] tracking-[-0.32px] translate-y-[-50%] w-[300px]">
+      <div className="absolute flex flex-col font-body justify-center leading-[0] left-[30px] not-italic text-[#ccc] text-[14px] top-[141px] tracking-[-0.32px] translate-y-[-50%] w-[300px]">
         <p className="leading-[22.4px]">We build systems that grow with you, whether you’re launching an MVP or scaling to 1M+ users, we ensure performance and structure never hold you back.</p>
       </div>
       <Frame1 />
@@ -236,7 +236,7 @@ function Card3() {
 function Frame2() {
   return (
     <div className="absolute bg-[rgba(255,255,255,0.1)] h-[66px] left-0 overflow-clip rounded-[14px] top-0 w-[360px]">
-      <p className="absolute font-['Neue_Haas_Grotesk_Display_Pro:55_Roman',sans-serif] leading-[100.02%] left-[calc(50%-120px)] not-italic text-[20px] text-nowrap text-white top-[calc(50%-12px)]">Better Customer Experience</p>
+      <p className="absolute font-display leading-[100.02%] left-[calc(50%-120px)] not-italic text-[20px] text-nowrap text-white top-[calc(50%-12px)]">Better Customer Experience</p>
     </div>
   );
 }
@@ -244,7 +244,7 @@ function Frame2() {
 function Card4() {
   return (
     <div className="absolute bg-[rgba(0,0,0,0.4)] h-[212px] left-[460px] overflow-clip rounded-[20px] top-[364px] w-[360px]" data-name="Card">
-      <div className="absolute flex flex-col font-['Poppins:Regular',sans-serif] justify-center leading-[22.4px] left-[30px] not-italic text-[#ccc] text-[14px] top-[141px] tracking-[-0.32px] translate-y-[-50%] w-[300px]">
+      <div className="absolute flex flex-col font-body justify-center leading-[22.4px] left-[30px] not-italic text-[#ccc] text-[14px] top-[141px] tracking-[-0.32px] translate-y-[-50%] w-[300px]">
         <p className="mb-0">{`From sleek UIs to smooth performance, we `}</p>
         <p className="mb-0">{`craft user-first products that boost `}</p>
         <p>engagement, reduce bounce rates, and leave a lasting impression.</p>
@@ -257,7 +257,7 @@ function Card4() {
 function Frame3() {
   return (
     <div className="absolute bg-[rgba(255,255,255,0.1)] h-[66px] left-0 overflow-clip rounded-[14px] top-0 w-[360px]">
-      <p className="absolute font-['Neue_Haas_Grotesk_Display_Pro:55_Roman',sans-serif] leading-[100.02%] left-[calc(50%-64px)] not-italic text-[20px] text-nowrap text-white top-[calc(50%-12px)]">24/7 Availablity</p>
+      <p className="absolute font-display leading-[100.02%] left-[calc(50%-64px)] not-italic text-[20px] text-nowrap text-white top-[calc(50%-12px)]">24/7 Availablity</p>
     </div>
   );
 }
@@ -265,7 +265,7 @@ function Frame3() {
 function Card5() {
   return (
     <div className="absolute bg-[rgba(0,0,0,0.4)] h-[212px] left-[839px] overflow-clip rounded-[20px] top-[364px] w-[360px]" data-name="Card">
-      <div className="absolute flex flex-col font-['Poppins:Regular',sans-serif] justify-center leading-[0] left-[30px] not-italic text-[#ccc] text-[14px] top-[141px] tracking-[-0.32px] translate-y-[-50%] w-[300px]">
+      <div className="absolute flex flex-col font-body justify-center leading-[0] left-[30px] not-italic text-[#ccc] text-[14px] top-[141px] tracking-[-0.32px] translate-y-[-50%] w-[300px]">
         <p className="leading-[22.4px]">We ensure your platforms are reliable, secure, and up 24/7 with proactive monitoring, fast fixes, and ongoing support when you need it most.</p>
       </div>
       <Frame3 />
@@ -278,7 +278,7 @@ export default function BenefitsOfJoiningUs() {
     <div className="bg-black blur-[0px] filter relative size-full" data-name="benefits of joining us">
       <Container />
       <div className="absolute bg-repeat bg-size-[1024px_1024px] bg-top-left inset-[-0.03%_-0.03%_0.03%_0.03%] mix-blend-overlay" data-name="texture" style={{ backgroundImage: `url('${imgTexture}')` }} />
-      <div className="absolute font-['Neue_Haas_Grotesk_Display_Pro:55_Roman',sans-serif] leading-[normal] left-[81px] not-italic text-[60px] text-white top-[140px] w-[811px]">
+      <div className="absolute font-display leading-[normal] left-[81px] not-italic text-[60px] text-white top-[140px] w-[811px]">
         <p className="mb-0">{`The key benefits of partnering `}</p>
         <p>with us for your business growth</p>
       </div>

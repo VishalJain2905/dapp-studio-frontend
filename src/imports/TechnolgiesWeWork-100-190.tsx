@@ -8,7 +8,7 @@ function Text1({ text, additionalClassNames = "" }: Text1Props) {
   return (
     <div className={clsx("absolute bg-white h-[77px] left-0 translate-y-[-50%] w-[322px]", additionalClassNames)}>
       <div className="overflow-clip relative rounded-[inherit] size-full">
-        <p className="absolute font-['Poppins:Medium',sans-serif] leading-[normal] left-[570px] not-italic text-[#909090] text-[16px] text-nowrap top-[50px]">{text}</p>
+        <p className="absolute font-body font-medium leading-[normal] left-[570px] not-italic text-[#909090] text-[16px] text-nowrap top-[50px]">{text}</p>
         <Text text="Lorem ipsum dolor sit amet." />
       </div>
       <div aria-hidden="true" className="absolute border-[1px_0px] border-black border-solid inset-[-1px_0] pointer-events-none" />
@@ -22,8 +22,8 @@ type TextProps = {
 function Text({ text }: TextProps) {
   return (
     <div className="absolute h-[38px] leading-[normal] left-[3px] not-italic text-nowrap top-[calc(50%+0.5px)] translate-y-[-50%] w-[141px]">
-      <p className="absolute font-['Poppins:Medium',sans-serif] left-0 text-[14px] text-black top-[calc(50%-19px)]">{`Technology name `}</p>
-      <p className="absolute font-['Poppins:Medium',sans-serif] left-0 text-[#909090] text-[10px] top-[27px]">{text}</p>
+      <p className="absolute font-body font-medium left-0 text-[14px] text-black top-[calc(50%-19px)]">{`Technology name `}</p>
+      <p className="absolute font-body font-medium left-0 text-[#909090] text-[10px] top-[27px]">{text}</p>
     </div>
   );
 }
@@ -31,7 +31,7 @@ function Text({ text }: TextProps) {
 function Frame() {
   return (
     <div className="absolute h-[38px] left-[0.01px] top-[12.5px] w-[325px]">
-      <p className="absolute font-['Poppins:Medium',sans-serif] leading-[normal] left-0 not-italic text-[32px] text-black text-nowrap top-0">Technology Capablities</p>
+      <p className="absolute font-body font-medium leading-[normal] left-0 not-italic text-[32px] text-black text-nowrap top-0">Technology Capablities</p>
     </div>
   );
 }
@@ -67,8 +67,8 @@ export default function TechnolgiesWeWork() {
   return (
     <div className="bg-white relative size-full" data-name="technolgies we work">
       <Frame2 />
-      <p className="absolute font-['Poppins:Regular',sans-serif] leading-[normal] left-[691px] not-italic text-[#909090] text-[14px] text-nowrap top-[113px]">2025</p>
-      <p className="absolute font-['Poppins:Regular',sans-serif] leading-[normal] left-[312px] not-italic text-[#909090] text-[12px] text-nowrap top-[52px]">2025</p>
+      <p className="absolute font-body leading-[normal] left-[691px] not-italic text-[#909090] text-[14px] text-nowrap top-[113px]">2025</p>
+      <p className="absolute font-body leading-[normal] left-[312px] not-italic text-[#909090] text-[12px] text-nowrap top-[52px]">2025</p>
     </div>
   );
 }

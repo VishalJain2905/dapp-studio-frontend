@@ -46,6 +46,7 @@ export function HomePage() {
       <div className="cards_wrap__card-stick">
         <OurWorkSection />
       </div>
+
     </div>
 
 

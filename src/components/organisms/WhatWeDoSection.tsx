@@ -79,12 +79,15 @@ export function WhatWeDoSection() {
           ref={textContentRef}
         >
           <h2 className="wwd-title">
-            The Right Tech Partner for
+            Technology built for 
             <br />
-            What's Next.
+            clarity and trust 
           </h2>
           <p className="wwd-description">
-            Online sales, ad clicks, content downloads, foot traffic, and more: drive the actions your business needs the most with customized channel strategy.
+            TechVirtue Infotech was started in 2024 by Tarun Bhati. After working across a range of industries and project types, Tarun had repeatedly seen the same issue. Businesses would hire developers who could write code, but were not on the same page about the project's purpose. 
+            He wanted to change this dynamic. TechVirtue started as a company that wanted to build solutions through clear communication and only build products that actually help clients. That philosophy is still at the heart of all of our services and all of our product decisions. 
+            We believe that good software is built when the business logic is known as clearly as the technology.  
+
           </p> 
         </div>
 

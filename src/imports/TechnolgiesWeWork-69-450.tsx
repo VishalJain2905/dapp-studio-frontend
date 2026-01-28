@@ -6,8 +6,8 @@ function Text({ text }: TextProps) {
   return (
     <div className="absolute bg-white h-[124px] left-0 top-1/2 translate-y-[-50%] w-[835px]">
       <div className="leading-[normal] not-italic overflow-clip relative rounded-[inherit] size-full text-nowrap">
-        <p className="absolute font-['Poppins:Medium',sans-serif] left-[40px] text-[26px] text-black top-[calc(50%-15px)]">{`Technology name `}</p>
-        <p className="absolute font-['Poppins:Medium',sans-serif] left-[570px] text-[#909090] text-[16px] top-[50px]">{text}</p>
+        <p className="absolute font-body font-medium left-[40px] text-[26px] text-black top-[calc(50%-15px)]">{`Technology name `}</p>
+        <p className="absolute font-body font-medium left-[570px] text-[#909090] text-[16px] top-[50px]">{text}</p>
       </div>
       <div aria-hidden="true" className="absolute border-[1px_0px] border-black border-solid inset-[-1px_0] pointer-events-none" />
     </div>
@@ -53,7 +53,7 @@ function Frame() {
       <Component1 />
       <Component2 />
       <Component3 />
-      <p className="absolute font-['Poppins:Medium',sans-serif] leading-[normal] left-0 not-italic text-[60px] text-black text-nowrap top-0">Technology Capablities</p>
+      <p className="absolute font-body font-medium leading-[normal] left-0 not-italic text-[60px] text-black text-nowrap top-0">Technology Capablities</p>
     </div>
   );
 }
@@ -71,7 +71,7 @@ export default function TechnolgiesWeWork() {
           </svg>
         </div>
       </div>
-      <p className="absolute font-['Poppins:Regular',sans-serif] leading-[normal] left-[691px] not-italic text-[#909090] text-[14px] text-nowrap top-[113px]">2025</p>
+      <p className="absolute font-body leading-[normal] left-[691px] not-italic text-[#909090] text-[14px] text-nowrap top-[113px]">2025</p>
     </div>
   );
 }

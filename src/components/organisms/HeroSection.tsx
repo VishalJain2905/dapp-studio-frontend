@@ -144,6 +144,10 @@ export function HeroSection() {
     loading="lazy"
     onLoad={() => setIframeLoaded(true)}
     className="hero-iframe"
+    style={{ 
+      willChange: 'transform',
+      containIntrinsicSize: '100% 100%'
+    }}
   />
 </div>
 

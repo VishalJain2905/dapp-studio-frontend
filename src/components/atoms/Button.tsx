@@ -18,7 +18,7 @@ export function Button({
   onClick,
   type = 'button'
 }: ButtonProps) {
-  const baseStyles = "font-medium tracking-[-0.32px] transition-all duration-300";
+  const baseStyles = "font-display font-medium tracking-tighter transition-all duration-300";
   
   const variants = {
     primary: 'bg-white text-black rounded-full hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] hover:bg-gradient-to-r hover:from-white hover:to-gray-50 active:scale-95',
@@ -61,7 +61,7 @@ export function MotionButton({
   animate?: any;
   transition?: any;
 }) {
-  const baseStyles = "font-medium tracking-[-0.32px]";
+  const baseStyles = "font-display font-medium tracking-tighter";
   
   const variants = {
     primary: 'bg-white text-black rounded-full',

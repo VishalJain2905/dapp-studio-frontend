@@ -62,7 +62,7 @@
 }
 
 .benefit-brand-logo {
-  font-family: 'Aeonik', sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 24px;
   letter-spacing: -0.02em;

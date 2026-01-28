@@ -7,7 +7,7 @@ type TextProps = {
 function Text({ text, additionalClassNames = "" }: TextProps) {
   return (
     <div className={clsx("content-stretch flex items-center justify-center px-[10px] py-[6px] relative rounded-[100px] shrink-0", additionalClassNames)}>
-      <p className="font-['Poppins:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[16px] text-nowrap text-white tracking-[-0.32px]">{text}</p>
+      <p className="font-body leading-[normal] not-italic relative shrink-0 text-[16px] text-nowrap text-white tracking-[-0.32px]">{text}</p>
     </div>
   );
 }

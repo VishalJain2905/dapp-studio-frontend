@@ -1924,41 +1924,6 @@
     text-align: left;
   }
 
-  .font-\[\'Figtree\:Medium\'\,sans-serif\] {
-    font-family: Figtree\:Medium, sans-serif;
-  }
-
-  .font-\[\'Inter\:Medium\'\,sans-serif\] {
-    font-family: Inter\:Medium, sans-serif;
-  }
-
-  .font-\[\'Inter\:Regular\'\,sans-serif\] {
-    font-family: Inter\:Regular, sans-serif;
-  }
-
-  .font-\[\'Neue_Haas_Grotesk_Display_Pro\:55_Roman\'\,sans-serif\] {
-    font-family: Neue Haas Grotesk Display Pro\:55 Roman, sans-serif;
-  }
-
-  .font-\[\'Neue_Haas_Grotesk_Display_Pro\:75_Bold\'\,sans-serif\] {
-    font-family: Neue Haas Grotesk Display Pro\:75 Bold, sans-serif;
-  }
-
-  .font-\[\'Poppins\:Bold\'\,sans-serif\] {
-    font-family: Poppins\:Bold, sans-serif;
-  }
-
-  .font-\[\'Poppins\:Medium\'\,sans-serif\] {
-    font-family: Poppins\:Medium, sans-serif;
-  }
-
-  .font-\[\'Poppins\:Regular\'\,sans-serif\] {
-    font-family: Poppins\:Regular, sans-serif;
-  }
-
-  .font-\[\'Poppins\:SemiBold\'\,sans-serif\] {
-    font-family: Poppins\:SemiBold, sans-serif;
-  }
 
   .text-3xl {
     font-size: var(--text-3xl);

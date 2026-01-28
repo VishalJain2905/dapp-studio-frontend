@@ -35,7 +35,7 @@ function Component({ additionalClassNames = "" }: ComponentProps) {
 function Group() {
   return (
     <div className="absolute contents left-px top-0">
-      <p className="absolute font-['Poppins:Medium',sans-serif] h-[108px] leading-[normal] left-px mix-blend-screen not-italic text-[#0a0a0a] text-[64px] top-0 w-[397px]">dApp Studio</p>
+      <p className="absolute font-body font-medium h-[108px] leading-[normal] left-px mix-blend-screen not-italic text-[#0a0a0a] text-[64px] top-0 w-[397px]">dApp Studio</p>
     </div>
   );
 }
@@ -43,7 +43,7 @@ function Group() {
 function Duplicate() {
   return (
     <div className="absolute contents left-0 top-0" data-name="duplicate">
-      <p className="absolute font-['Poppins:Medium',sans-serif] h-[108px] leading-[normal] left-0 mix-blend-screen not-italic text-[64px] text-black top-0 w-[397px]">dApp Studio</p>
+      <p className="absolute font-body font-medium h-[108px] leading-[normal] left-0 mix-blend-screen not-italic text-[64px] text-black top-0 w-[397px]">dApp Studio</p>
     </div>
   );
 }

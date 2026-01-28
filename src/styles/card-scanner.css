@@ -129,7 +129,7 @@
 
 .ascii-code-content {
   color: rgba(255, 255, 255, 0.6);
-  font-family: 'Courier New', monospace;
+  font-family: var(--font-mono);
   font-size: 10px; line-height: 12px; white-space: pre;
   width: 100%; height: 100%; padding: 12px; overflow: hidden;
   text-align: left; animation: glitch-text 0.15s infinite linear alternate-reverse;
@@ -142,7 +142,7 @@
 
 /* Card Content Details */
 .card-tag {
-  font-family: 'Space Mono', monospace;
+  font-family: var(--font-body);
   font-size: 11px;
   color: #888888;
   text-transform: uppercase;
@@ -186,7 +186,7 @@
 }
 
 .card-hash {
-  font-family: 'Courier New', monospace;
+  font-family: var(--font-mono);
   font-size: 12px;
   color: rgba(255, 255, 255, 0.4);
 }

@@ -1,39 +1,44 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { MoveRight } from "lucide-react";
+import { Sparkles, Palette, Layout, Code2, Smartphone, Settings } from "lucide-react";
 import "../../styles/our-work.css";
 
-interface WorkItem {
+interface ServiceItem {
   title: string;
-  category: string;
   description: string;
-  image: string;
+  icon: React.ReactNode;
 }
 
-const workItems: WorkItem[] = [
+const serviceItems: ServiceItem[] = [
   {
-    title: "DeFi Analytics Hub",
-    category: "Web3 / Fintech",
-    description: "A comprehensive dashboard for tracking decentralized finance protocols with real-time data visualization.",
-    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=2064&auto=format&fit=crop",
+    title: "Brand Identity",
+    description: "Comprehensive brand development including logo design, color palettes, typography systems, and visual guidelines that ensure brand consistency across all touchpoints.",
+    icon: <Sparkles size={18} />,
   },
   {
-    title: "NFT Genesis Market",
-    category: "Marketplace",
-    description: "Premium digital art commerce platform featuring curated collections and seamless bidding systems.",
-    image: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1974&auto=format&fit=crop",
+    title: "Illustration",
+    description: "Custom illustrations and graphics tailored to your brand's personality. From icons to full-page illustrations that bring your vision to life.",
+    icon: <Palette size={18} />,
   },
   {
-    title: "AI Neural Workspace",
-    category: "SaaS / AI",
-    description: "Productivity suite integrated with advanced neural networks to automate complex workflows and research.",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2064&auto=format&fit=crop",
+    title: "UI/UX Design",
+    description: "User-centered design solutions that combine aesthetics with functionality. We create intuitive interfaces that delight users and drive engagement.",
+    icon: <Layout size={18} />,
   },
   {
-    title: "Metaverse Gaming Portal",
-    category: "GameDev / Web3",
-    description: "Immersive 3D entry point for the next generation of cross-chain multiplayer experiences.",
-    image: "https://images.unsplash.com/photo-1614728263952-84ea206f99b6?q=80&w=2008&auto=format&fit=crop",
+    title: "Frontend Design",
+    description: "Pixel-perfect frontend development with modern technologies. Responsive, accessible, and performant web experiences that look great everywhere.",
+    icon: <Code2 size={18} />,
+  },
+  {
+    title: "Android/iOS App",
+    description: "Native and cross-platform mobile app development. From concept to deployment, we build apps that users love to use every day.",
+    icon: <Smartphone size={18} />,
+  },
+  {
+    title: "Software Development",
+    description: "End-to-end software solutions tailored to your business needs. Scalable, secure, and maintainable systems built with best practices.",
+    icon: <Settings size={18} />,
   }
 ];
 
@@ -42,32 +47,43 @@ export function OurWorkSection() {
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
   return (
-    <section ref={sectionRef} className="work-section">
-      <div className="work-section-container">
+    <section ref={sectionRef} className="services-section">
+      <div className="services-container">
         {/* Header */}
-        <div className="work-section-header">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="work-section-title"
-          >
-            Our Work
-          </motion.h2>
+        <div className="services-header">
+          <div className="services-header-left">
+            <motion.span 
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6 }}
+              className="services-label"
+            >
+              [ What we do ]
+            </motion.span>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="services-title"
+            >
+              We design meaningful not just<br />
+              quick impressions
+            </motion.h2>
+          </div>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="work-section-subtitle"
+            className="services-description"
           >
-            Custom solutions built with precision, performance, and future-proof technologies.
+            Quality-driven design at every level. Our integrated approach helps brands go to market faster with confidence.
           </motion.p>
         </div>
 
-        {/* Work Grid */}
-        <div className="work-grid">
-          {workItems.map((item, index) => (
-            <WorkCard key={index} item={item} index={index} />
+        {/* Cards Grid */}
+        <div className="services-grid">
+          {serviceItems.map((item, index) => (
+            <ServiceCard key={index} item={item} index={index} />
           ))}
         </div>
       </div>
@@ -75,42 +91,37 @@ export function OurWorkSection() {
   );
 }
 
-interface WorkCardProps {
-  item: WorkItem;
+interface ServiceCardProps {
+  item: ServiceItem;
   index: number;
-  key?: number | string;
 }
 
-const WorkCard = ({ item, index }: WorkCardProps) => {
+const ServiceCard = ({ item, index }: ServiceCardProps) => {
   const cardRef = useRef(null);
   const isInView = useInView(cardRef, { once: true, amount: 0.2 });
 
   return (
     <motion.div
       ref={cardRef}
-      initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
-      animate={isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
-      transition={{ duration: 0.8, delay: index * 0.15, ease: [0, 0, 0.25, 1] }}
-      className="work-card"
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.1, ease: [0, 0, 0.25, 1] }}
+      className="service-card"
     >
-      <div className="work-card-image-content">
-        <img src={item.image} alt={item.title} className="work-card-image" loading="lazy" />
-        <div className="work-card-overlay" />
+      {/* Corner Glow Effects */}
+      <div className="corner-glow top-left"></div>
+      <div className="corner-glow bottom-right"></div>
+      
+      {/* Icon */}
+      <div className="service-card-icon">
+        {item.icon}
       </div>
-
-      <div className="work-card-content">
-        <div className="work-card-category">{item.category}</div>
-        <h3 className="work-card-title">{item.title}</h3>
-        <p className="work-card-description">{item.description}</p>
-        
-        <div className="work-card-button">
-          <span className="work-button-text">Explore Project</span>
-          <div className="work-button-icon">
-            <MoveRight size={18} />
-          </div>
-        </div>
-      </div>
+      
+      {/* Title */}
+      <h3 className="service-card-title">{item.title}</h3>
+      
+      {/* Description */}
+      <p className="service-card-description">{item.description}</p>
     </motion.div>
   );
 };
-

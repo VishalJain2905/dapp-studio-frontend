@@ -87,11 +87,11 @@ function Component() {
 export default function Frame() {
   return (
     <div className="bg-[rgba(255,255,255,0.1)] overflow-clip relative rounded-[12px] size-full">
-      <div className="absolute font-['Poppins:Medium',sans-serif] leading-[100.02%] left-[24px] not-italic text-[20px] text-nowrap text-white top-[36px]">
+      <div className="absolute font-body font-medium leading-[100.02%] left-[24px] not-italic text-[20px] text-nowrap text-white top-[36px]">
         <p className="mb-0">Tailored Systems,</p>
         <p>Total Control</p>
       </div>
-      <p className="absolute font-['Poppins:Regular',sans-serif] leading-[normal] left-[24px] not-italic text-[#909090] text-[14px] top-[125px] w-[232px]">From custom dashboards to complex integrations, we build tech that fits your workflow — giving you full control without the technical hassle.</p>
+      <p className="absolute font-body leading-[normal] left-[24px] not-italic text-[#909090] text-[14px] top-[125px] w-[232px]">From custom dashboards to complex integrations, we build tech that fits your workflow — giving you full control without the technical hassle.</p>
       <Component />
     </div>
   );

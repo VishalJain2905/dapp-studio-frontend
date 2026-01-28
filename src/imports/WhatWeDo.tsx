@@ -1,6 +1,6 @@
 import svgPaths from "./svg-cykr0ekwsq";
 import clsx from "clsx";
-import imgScreenshot202510131203171 from "figma:asset/0826489df6d10820dc4ba48a30a10e3c35843dc6.png";
+import imgScreenshot202510131203171 from "../assets/optimized/0826489df6d10820dc4ba48a30a10e3c35843dc6.jpg";
 
 function Component42Helper({ children }: React.PropsWithChildren<{}>) {
   return (
@@ -62,12 +62,12 @@ function Component() {
 function Frame() {
   return (
     <div className="absolute bg-[rgba(255,255,255,0.1)] h-[275px] left-[596px] overflow-clip rounded-[12px] top-[364px] w-[280px]">
-      <p className="absolute font-['Neue_Haas_Grotesk_Display_Pro:55_Roman',sans-serif] leading-[100.02%] left-[24px] not-italic text-[20px] text-nowrap text-white top-[36px]">
+      <p className="absolute font-display leading-[100.02%] left-[24px] not-italic text-[20px] text-nowrap text-white top-[36px]">
         Build Smarter,
         <br aria-hidden="true" />
         Launch Faster
       </p>
-      <p className="absolute font-['Poppins:Regular',sans-serif] leading-[normal] left-[24px] not-italic text-[#909090] text-[14px] top-[125px] w-[232px]">We craft high-performance web and mobile apps that are fast, scalable, and user-focused helping you go from idea to launch with confidence and speed.</p>
+      <p className="absolute font-body leading-[normal] left-[24px] not-italic text-[#909090] text-[14px] top-[125px] w-[232px]">We craft high-performance web and mobile apps that are fast, scalable, and user-focused helping you go from idea to launch with confidence and speed.</p>
       <Component />
     </div>
   );
@@ -127,11 +127,11 @@ function Frame2() {
   return (
     <div className="absolute bg-[rgba(255,255,255,0.1)] h-[275px] left-[596px] overflow-clip rounded-[12px] top-[655px] w-[280px]">
       <Component1 />
-      <div className="absolute font-['Neue_Haas_Grotesk_Display_Pro:55_Roman',sans-serif] leading-[100.02%] left-[24px] not-italic text-[20px] text-nowrap text-white top-[36px]">
+      <div className="absolute font-display leading-[100.02%] left-[24px] not-italic text-[20px] text-nowrap text-white top-[36px]">
         <p className="mb-0">Engineered to</p>
         <p>Scale Securely</p>
       </div>
-      <p className="absolute font-['Poppins:Regular',sans-serif] leading-[normal] left-[24px] not-italic text-[#909090] text-[14px] top-[125px] w-[232px]">Our solutions are built on rock-solid architecture that scales effortlessly and keeps your data safe — so you can grow without limits.</p>
+      <p className="absolute font-body leading-[normal] left-[24px] not-italic text-[#909090] text-[14px] top-[125px] w-[232px]">Our solutions are built on rock-solid architecture that scales effortlessly and keeps your data safe — so you can grow without limits.</p>
     </div>
   );
 }
@@ -225,11 +225,11 @@ function Component2() {
 function Frame1() {
   return (
     <div className="absolute bg-[rgba(255,255,255,0.1)] h-[275px] left-[892px] overflow-clip rounded-[12px] top-[364px] w-[280px]">
-      <div className="absolute font-['Neue_Haas_Grotesk_Display_Pro:55_Roman',sans-serif] leading-[100.02%] left-[24px] not-italic text-[20px] text-nowrap text-white top-[36px]">
+      <div className="absolute font-display leading-[100.02%] left-[24px] not-italic text-[20px] text-nowrap text-white top-[36px]">
         <p className="mb-0">Tailored Systems,</p>
         <p>Total Control</p>
       </div>
-      <p className="absolute font-['Poppins:Regular',sans-serif] leading-[normal] left-[24px] not-italic text-[#909090] text-[14px] top-[125px] w-[232px]">From custom dashboards to complex integrations, we build tech that fits your workflow — giving you full control without the technical hassle.</p>
+      <p className="absolute font-body leading-[normal] left-[24px] not-italic text-[#909090] text-[14px] top-[125px] w-[232px]">From custom dashboards to complex integrations, we build tech that fits your workflow — giving you full control without the technical hassle.</p>
       <Component2 />
     </div>
   );
@@ -335,11 +335,11 @@ function Frame3() {
   return (
     <div className="absolute bg-[rgba(255,255,255,0.1)] h-[275px] left-[892px] overflow-clip rounded-[12px] top-[655px] w-[280px]">
       <Component3 />
-      <div className="absolute font-['Neue_Haas_Grotesk_Display_Pro:55_Roman',sans-serif] leading-[100.02%] left-[24px] not-italic text-[20px] text-nowrap text-white top-[36px]">
+      <div className="absolute font-display leading-[100.02%] left-[24px] not-italic text-[20px] text-nowrap text-white top-[36px]">
         <p className="mb-0">Innovate</p>
         <p>Beyond Limits</p>
       </div>
-      <p className="absolute font-['Poppins:Regular',sans-serif] leading-[normal] left-[24px] not-italic text-[#909090] text-[14px] top-[125px] w-[232px]">Leverage the power of AI, automation, and Web3. We build intelligent, next-gen solutions that move your business into the future.</p>
+      <p className="absolute font-body leading-[normal] left-[24px] not-italic text-[#909090] text-[14px] top-[125px] w-[232px]">Leverage the power of AI, automation, and Web3. We build intelligent, next-gen solutions that move your business into the future.</p>
     </div>
   );
 }
@@ -350,7 +350,7 @@ export default function WhatWeDo() {
       <div className="absolute h-[403px] left-[117px] top-[442px] w-[404px]" data-name="Screenshot 2025-10-13 120317 1">
         <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgScreenshot202510131203171} />
       </div>
-      <p className="absolute font-['Neue_Haas_Grotesk_Display_Pro:55_Roman',sans-serif] leading-[1.2] left-[83px] not-italic text-[60px] text-nowrap text-white top-[120px]">
+      <p className="absolute font-display leading-[1.2] left-[83px] not-italic text-[60px] text-nowrap text-white top-[120px]">
         {`The Right Tech Partner for `}
         <br aria-hidden="true" />
         What’s Next.

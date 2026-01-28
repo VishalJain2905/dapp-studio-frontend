@@ -8,7 +8,7 @@ function Frame1() {
       <div className="absolute h-[28px] left-0 top-[calc(50%-3px)] translate-y-[-50%] w-[24px]" data-name="dApp_@ux 1">
         <img alt="" className="absolute inset-0 max-w-none object-50%-50% object-cover pointer-events-none size-full" src={imgDAppUx1} />
       </div>
-      <p className="absolute font-['Poppins:SemiBold',sans-serif] leading-[normal] left-[27px] not-italic text-[16px] text-nowrap text-white top-[4px] tracking-[-0.32px]">dApp Studio</p>
+      <p className="absolute font-body font-semibold leading-[normal] left-[27px] not-italic text-[16px] text-nowrap text-white top-[4px] tracking-[-0.32px]">dApp Studio</p>
     </div>
   );
 }
@@ -37,7 +37,7 @@ function Frame5() {
 function Frame2() {
   return (
     <div className="bg-white content-stretch flex items-center justify-center px-[24px] py-[14px] relative rounded-[100px] shrink-0">
-      <p className="font-['Poppins:Medium',sans-serif] leading-[normal] not-italic relative shrink-0 text-[16px] text-black text-nowrap tracking-[-0.32px]">View Services</p>
+      <p className="font-body font-medium leading-[normal] not-italic relative shrink-0 text-[16px] text-black text-nowrap tracking-[-0.32px]">View Services</p>
     </div>
   );
 }
@@ -45,7 +45,7 @@ function Frame2() {
 function Frame() {
   return (
     <div className="content-stretch flex items-center justify-center px-[10px] py-[6px] relative rounded-[100px] shrink-0">
-      <p className="font-['Poppins:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[16px] text-nowrap text-white tracking-[-0.32px]">Get In Touch</p>
+      <p className="font-body leading-[normal] not-italic relative shrink-0 text-[16px] text-nowrap text-white tracking-[-0.32px]">Get In Touch</p>
     </div>
   );
 }
@@ -90,11 +90,11 @@ export default function IPhone() {
         </div>
       </div>
       <Frame5 />
-      <div className="absolute font-['Neue_Haas_Grotesk_Display_Pro:55_Roman',sans-serif] leading-[normal] left-[calc(50%+7.5px)] not-italic text-[32px] text-center text-white top-[540px] translate-x-[-50%] w-[308px]">
+      <div className="absolute font-display leading-[normal] left-[calc(50%+7.5px)] not-italic text-[32px] text-center text-white top-[540px] translate-x-[-50%] w-[308px]">
         <p className="mb-0">Engineering the Future</p>
         <p>of Digital Innovation.</p>
       </div>
-      <p className="absolute font-['Poppins:Medium',sans-serif] leading-[normal] left-[calc(50%+7.5px)] not-italic text-[#909090] text-[14px] text-center top-[626px] translate-x-[-50%] w-[286px]">We build advanced, secure, and scalable solutions for forward-thinking companies.</p>
+      <p className="absolute font-body font-medium leading-[normal] left-[calc(50%+7.5px)] not-italic text-[#909090] text-[14px] text-center top-[626px] translate-x-[-50%] w-[286px]">We build advanced, secure, and scalable solutions for forward-thinking companies.</p>
       <Frame3 />
     </div>
   );

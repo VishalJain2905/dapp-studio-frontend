@@ -56,11 +56,11 @@ export default function Frame() {
   return (
     <div className="bg-[rgba(255,255,255,0.1)] overflow-clip relative rounded-[12px] size-full">
       <Component />
-      <div className="absolute font-['Neue_Haas_Grotesk_Display_Pro:55_Roman',sans-serif] leading-[100.02%] left-[24px] not-italic text-[20px] text-nowrap text-white top-[36px]">
+      <div className="absolute font-display leading-[100.02%] left-[24px] not-italic text-[20px] text-nowrap text-white top-[36px]">
         <p className="mb-0">Engineered to</p>
         <p>Scale Securely</p>
       </div>
-      <p className="absolute font-['Poppins:Regular',sans-serif] leading-[normal] left-[24px] not-italic text-[#909090] text-[14px] top-[125px] w-[232px]">Our solutions are built on rock-solid architecture that scales effortlessly and keeps your data safe — so you can grow without limits.</p>
+      <p className="absolute font-body leading-[normal] left-[24px] not-italic text-[#909090] text-[14px] top-[125px] w-[232px]">Our solutions are built on rock-solid architecture that scales effortlessly and keeps your data safe — so you can grow without limits.</p>
     </div>
   );
 }

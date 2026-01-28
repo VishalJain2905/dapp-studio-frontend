@@ -383,7 +383,7 @@ body {
     line-height: 1.2;
   }
 
-  /* Body text - Poppins */
+  /* Body text - Aeonik */
   p {
     font-family: var(--font-body) !important;
     font-weight: 400;
@@ -410,11 +410,12 @@ body {
   letter-spacing: -0.02em;
 }
 
-/* Body font - Poppins for body text */
+/* Body font - Aeonik for body text */
 .font-body {
   font-family: var(--font-body) !important;
   font-weight: 400;
-  line-height: 1;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
 }
 
 .font-medium {
@@ -458,6 +459,86 @@ body {
   font-size: 20px;
   line-height: normal;
   color: white;
+}
+
+@media (min-width: 768px) {
+  .text-heading-card {
+    font-size: 26px;
+  }
+}
+
+/* Additional typography utilities for consistent sizing */
+.text-body-lg {
+  font-family: var(--font-body) !important;
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 768px) {
+  .text-body-lg {
+    font-size: 20px;
+  }
+}
+
+.text-body-base {
+  font-family: var(--font-body) !important;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 768px) {
+  .text-body-base {
+    font-size: 18px;
+  }
+}
+
+.text-body-sm {
+  font-family: var(--font-body) !important;
+  font-size: 14px;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+@media (min-width: 768px) {
+  .text-body-sm {
+    font-size: 16px;
+  }
+}
+
+/* Weight utilities using Aeonik weights */
+.font-light {
+  font-weight: var(--font-weight-light);
+}
+
+.font-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.font-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.font-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.font-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Letter spacing utilities */
+.tracking-tighter {
+  letter-spacing: var(--tracking-tight);
+}
+
+.tracking-normal {
+  letter-spacing: var(--tracking-normal);
+}
+
+.tracking-wider {
+  letter-spacing: var(--tracking-wide);
 }
 
 /* ===============================

@@ -122,11 +122,11 @@ export default function Frame() {
   return (
     <div className="bg-[rgba(255,255,255,0.1)] overflow-clip relative rounded-[12px] size-full">
       <Component />
-      <div className="absolute font-['Neue_Haas_Grotesk_Display_Pro:55_Roman',sans-serif] leading-[100.02%] left-[24px] not-italic text-[20px] text-nowrap text-white top-[36px]">
+      <div className="absolute font-display leading-[100.02%] left-[24px] not-italic text-[20px] text-nowrap text-white top-[36px]">
         <p className="mb-0">Innovate</p>
         <p>Beyond Limits</p>
       </div>
-      <p className="absolute font-['Poppins:Regular',sans-serif] leading-[normal] left-[24px] not-italic text-[#909090] text-[14px] top-[125px] w-[232px]">Leverage the power of AI, automation, and Web3. We build intelligent, next-gen solutions that move your business into the future.</p>
+      <p className="absolute font-body leading-[normal] left-[24px] not-italic text-[#909090] text-[14px] top-[125px] w-[232px]">Leverage the power of AI, automation, and Web3. We build intelligent, next-gen solutions that move your business into the future.</p>
     </div>
   );
 }

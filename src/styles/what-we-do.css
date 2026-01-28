@@ -6,7 +6,7 @@
   background-color: #000000;
   position: relative;
   width: 100%;
-  padding: 80px 20px;
+  padding: 60px 20px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -15,8 +15,8 @@
 
 @media (min-width: 1024px) {
   .what-we-do-section {
-    padding: 120px 0;
-    min-height: 100vh;
+    padding: 80px 0;
+    /* Removed min-height: 100vh to avoid excessive vertical space */
   }
 }
 
@@ -32,10 +32,9 @@
   .wwd-container {
     display: grid;
     grid-template-columns: 1fr 1fr; /* 50% 50% Layout */
-    gap: 80px; /* Wider gap for better separation */
+    gap: 40px; /* Reduced gap */
     align-items: center;
     padding: 0 40px;
-    max-width: 1680px; /* Increased max-width for "more width" */
   }
 }
 
@@ -47,11 +46,10 @@
 @media (min-width: 1024px) {
   .wwd-content {
     margin-bottom: 0;
-    max-width: 540px; /* Increased text width slightly for balance */
+
     align-self: center; 
     text-align: left;
     order: 2; 
-    margin-left: auto; /* Push slightly right if needed */
   }
 }
 
@@ -83,7 +81,7 @@
 .wwd-grid-wrapper {
   position: relative;
   width: 100%;
-  height: 600px;
+  height: 450px; /* Reduced height */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -96,7 +94,7 @@
 .wwd-grid-wrapper {
   position: relative;
   width: 100%;
-  height: 600px;
+  height: 450px; /* Reduced height */
   display: flex;
   align-items: center;
   justify-content: center;

@@ -3,7 +3,7 @@ import svgPaths from "./svg-2cx68a9655";
 function Frame1() {
   return (
     <div className="bg-white content-stretch flex items-center justify-center px-[24px] py-[14px] relative rounded-[100px] shrink-0">
-      <p className="font-['Poppins:Medium',sans-serif] leading-[normal] not-italic relative shrink-0 text-[16px] text-black text-nowrap tracking-[-0.32px]">View Services</p>
+      <p className="font-body font-medium leading-[normal] not-italic relative shrink-0 text-[16px] text-black text-nowrap tracking-[-0.32px]">View Services</p>
     </div>
   );
 }
@@ -11,7 +11,7 @@ function Frame1() {
 function Frame() {
   return (
     <div className="content-stretch flex items-center justify-center px-[10px] py-[6px] relative rounded-[100px] shrink-0">
-      <p className="font-['Poppins:Regular',sans-serif] leading-[normal] not-italic relative shrink-0 text-[16px] text-nowrap text-white tracking-[-0.32px]">Get In Touch</p>
+      <p className="font-body leading-[normal] not-italic relative shrink-0 text-[16px] text-nowrap text-white tracking-[-0.32px]">Get In Touch</p>
     </div>
   );
 }

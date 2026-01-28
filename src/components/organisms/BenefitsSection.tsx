@@ -1,4 +1,4 @@
-import imgTexture from "../../assets/225d51d90ac23d1d315ee056047f3310ff4bc3e6.png";
+import imgTexture from "../../assets/optimized/225d51d90ac23d1d315ee056047f3310ff4bc3e6.jpg";
 import React, { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import "../../styles/benefit-cards.css";
