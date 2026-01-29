@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useInView } from "motion/react";
+import { motion, useInView, useScroll, useTransform } from "motion/react";
 import { FAQItem } from "../molecules/FAQItem";
 import { fadeUpVariant, staggerContainer, staggerItem } from "../../utils/animations";
 
@@ -30,6 +30,20 @@ export function FAQSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
 
+  // Parallax scroll tracking
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Title parallax
+  const titleY = useTransform(scrollYProgress, [0, 0.3], [60, 0]);
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
+
+  // FAQ items parallax
+  const itemsY = useTransform(scrollYProgress, [0.1, 0.4], [80, 0]);
+  const itemsOpacity = useTransform(scrollYProgress, [0.1, 0.35], [0, 1]);
+
   return (
     <section ref={sectionRef} className="bg-black py-12 md:py-20 px-4 md:px-20">
       <motion.div 
@@ -41,6 +55,7 @@ export function FAQSection() {
         <motion.h2 
           variants={fadeUpVariant}
           className="text-white text-[32px] md:text-[60px] text-center mb-[10px]"
+          style={{ y: titleY, opacity: titleOpacity }}
         >
           Still Got Questions?
         </motion.h2>
@@ -48,13 +63,15 @@ export function FAQSection() {
         <motion.p 
           variants={fadeUpVariant}
           className="text-[#909090] text-[16px] tracking-[-0.44px] text-center mb-12 md:mb-16 leading-[33px]"
+          style={{ y: titleY, opacity: titleOpacity }}
         >
           No worries. We've answered the most common stuff below. If it's not here, just reach out.
         </motion.p>
         
-        {/* FAQ Items with staggered reveal */}
+        {/* FAQ Items with staggered reveal and parallax */}
         <motion.div 
           className="space-y-5"
+          style={{ y: itemsY, opacity: itemsOpacity }}
           variants={{
             hidden: { opacity: 0 },
             visible: {

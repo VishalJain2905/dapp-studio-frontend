@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { fadeLeftVariant, staggerContainer } from "../../utils/animations";
 import avatarKai from "../../assets/test.png";
 import avatarLeo from "../../assets/test2.png";
@@ -136,44 +136,23 @@ export function TestimonialsSection() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [scrollComplete, setScrollComplete] = useState(false);
 
+  // Parallax scroll tracking
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Title parallax - slides from left
+  const titleX = useTransform(scrollYProgress, [0, 0.3], [-80, 0]);
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
+
+  // Container parallax
+  const containerY = useTransform(scrollYProgress, [0.1, 0.4], [60, 0]);
+  const containerOpacity = useTransform(scrollYProgress, [0.1, 0.35], [0, 1]);
+
   useEffect(() => {
-    const section = sectionRef.current;
-    const scrollContainer = scrollContainerRef.current;
-    if (!section || !scrollContainer) return;
-
-    const handleWheel = (e: WheelEvent) => {
-      const rect = section.getBoundingClientRect();
-      const isInView = rect.top <= 100 && rect.bottom >= window.innerHeight * 0.5;
-      
-      if (!isInView) return;
-
-      const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
-      const isAtTop = scrollTop <= 0;
-      const isAtBottom = scrollTop + clientHeight >= scrollHeight - 5;
-
-      // Scrolling down
-      if (e.deltaY > 0) {
-        if (!isAtBottom) {
-          e.preventDefault();
-          scrollContainer.scrollTop += e.deltaY;
-        } else {
-          setScrollComplete(true);
-        }
-      }
-      // Scrolling up
-      else if (e.deltaY < 0) {
-        if (!isAtTop && scrollComplete) {
-          e.preventDefault();
-          scrollContainer.scrollTop += e.deltaY;
-        } else if (isAtTop) {
-          setScrollComplete(false);
-        }
-      }
-    };
-
-    window.addEventListener('wheel', handleWheel, { passive: false });
-    return () => window.removeEventListener('wheel', handleWheel);
-  }, [scrollComplete]);
+    // Browser handles scrolling naturally - no manual intervention
+  }, []);
 
   return (
     <section 
@@ -190,15 +169,17 @@ export function TestimonialsSection() {
         <motion.h2
           variants={fadeLeftVariant}
           className="testimonials-title testimonials-fade-left"
+          style={{ x: titleX, opacity: titleOpacity }}
         >
           Why businesses love<br />
           our web solutions
         </motion.h2>
 
-        {/* Testimonials Scroll Container - Compact view */}
-        <div
+        {/* Testimonials Scroll Container with Parallax */}
+        <motion.div
           ref={scrollContainerRef}
           className="testimonials-scroll-container"
+          style={{ y: containerY, opacity: containerOpacity }}
         >
           {/* Fade gradient at top */}
           <div className="testimonials-fade-top" />
@@ -219,7 +200,7 @@ export function TestimonialsSection() {
           
           {/* Fade gradient at bottom */}
           <div className="testimonials-fade-bottom" />
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );

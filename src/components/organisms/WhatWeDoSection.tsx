@@ -1,11 +1,8 @@
 import React, { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion, useScroll, useTransform } from "motion/react";
 import { useInView } from "motion/react";
 import "../../styles/what-we-do.css";
 
-gsap.registerPlugin(ScrollTrigger);
 
 // Service card data (Text Only)
 const serviceCards = [
@@ -33,50 +30,41 @@ const serviceCards = [
 
 export function WhatWeDoSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const textContentRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   
   // Detection for performance: Is the section in view?
   const isVisible = useInView(sectionRef, { amount: 0.1 });
 
-  useGSAP(() => {
-    if (!textContentRef.current) return;
+  // Parallax scroll tracking
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
 
-    // "Dheere dheere" (slowly) animation from bottom
-    gsap.from(textContentRef.current.children, {
-      y: 60,
-      opacity: 0,
-      duration: 1.5,
-      stagger: 0.2,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: textContentRef.current,
-        start: "top 85%", // Starts when the top of text is at 85% of viewport
-        toggleActions: "play none none none",
-      }
-    });
+  // Parallax transforms - text from left, carousel from right
+  const textX = useTransform(scrollYProgress, [0, 0.3, 0.5], [-100, 0, 0]);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+  
+  const carouselX = useTransform(scrollYProgress, [0, 0.3, 0.5], [100, 0, 0]);
+  const carouselOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
 
-    // Carousel entry animation
-    gsap.from(".wwd-grid-wrapper", {
-      scale: 0.95,
-      opacity: 0,
-      duration: 2,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: ".wwd-grid-wrapper",
-        start: "top 90%",
-      }
-    });
-  }, { scope: containerRef });
+  // Subtle vertical parallax for depth
+  const contentY = useTransform(scrollYProgress, [0.5, 1], [0, -50]);
 
   return (
     <section ref={sectionRef} className="what-we-do-section">
-      <div className="wwd-container">
+      <motion.div 
+        className="wwd-container"
+        style={{ y: contentY }}
+      >
         
-        {/* Left Column: Text Content (GSAP Animated) */}
-        <div 
+        {/* Left Column: Text Content with Parallax */}
+        <motion.div 
           className="wwd-content"
-          ref={textContentRef}
+          style={{ 
+            x: textX, 
+            opacity: textOpacity 
+          }}
         >
           <h2 className="wwd-title">
             Technology built for 
@@ -89,10 +77,16 @@ export function WhatWeDoSection() {
             We believe that good software is built when the business logic is known as clearly as the technology.  
 
           </p> 
-        </div>
+        </motion.div>
 
-        {/* Right Column: 3D Carousel (Text Only) */}
-        <div className="wwd-grid-wrapper">
+        {/* Right Column: 3D Carousel with Parallax */}
+        <motion.div 
+          className="wwd-grid-wrapper"
+          style={{ 
+            x: carouselX, 
+            opacity: carouselOpacity 
+          }}
+        >
           <div className={`wwd-carousel-inner ${!isVisible ? 'wwd-carousel-paused' : ''}`}>
             {serviceCards.map((card, i) => (
               <div 
@@ -119,9 +113,9 @@ export function WhatWeDoSection() {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -165,25 +165,27 @@ export function CardScannerSection() {
     return () => cancelAnimationFrame(animationFrameId);
   }, [isInView, isScanning]);
 
-  // Handle Scanning state check (Centralized to parent)
+  const streamProjects = useMemo(() => [...MOCK_PROJECTS, ...MOCK_PROJECTS, ...MOCK_PROJECTS], []);
+
+  // Handle Scanning state check (Optimized: Using math instead of DOM queries)
   useEffect(() => {
     if (!isInView) return;
-    const interval = setInterval(() => {
-      const scannerX = window.innerWidth * 0.2;
-      const cards = document.querySelectorAll(".scanner-card-wrapper");
-      let active = false;
-      cards.forEach(card => {
-        const rect = card.getBoundingClientRect();
-        if (rect.left < scannerX + 100 && rect.right > scannerX - 100) {
-          active = true;
-        }
-      });
-      setIsScanning(active);
-    }, 100); // Reduced frequency
-    return () => clearInterval(interval);
-  }, [isInView]);
+    
+    const scannerX = window.innerWidth * 0.2;
+    const cardWidth = 380;
+    const cardGap = 80;
+    const initialOffset = 100;
+    
+    const active = streamProjects.some((_, i) => {
+      const cardLeftGlobal = initialOffset + (i * (cardWidth + cardGap)) + position;
+      const cardRightGlobal = cardLeftGlobal + cardWidth;
+      return cardLeftGlobal < scannerX + 50 && cardRightGlobal > scannerX - 50;
+    });
+    
+    setIsScanning(active);
+  }, [isInView, position, streamProjects]);
 
-  const streamProjects = useMemo(() => [...MOCK_PROJECTS, ...MOCK_PROJECTS, ...MOCK_PROJECTS], []);
+  // Handle Scanning state check (Optimized: Using math instead of DOM queries)
 
   return (
     <section ref={sectionRef} className="card-scanner-section">

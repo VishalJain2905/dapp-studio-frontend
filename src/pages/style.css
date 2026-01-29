@@ -1,9 +1,10 @@
-/* ====== SIMPLE PAGE LAYOUT ====== */
+/* ====== ONE-PAGE PARALLAX LAYOUT ====== */
 
 /* Main wrapper */
 .card-wrap {
   position: relative;
   width: 100%;
+  overflow-x: hidden;
 }
 
 /* ====== HERO+TECH CARD - STICKY AT TOP ====== */
@@ -12,18 +13,25 @@
   top: 0;
   width: 100%;
   z-index: 1;
+  min-height: 100vh;
 }
 
-/* ====== OTHER CARDS - NORMAL SCROLL ====== */
+/* ====== ALL SECTIONS - 100VH ====== */
 .card {
   position: relative;
   width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
 }
 
 /* ====== INNER CONTENT ====== */
 .cards_wrap__card-stick {
   position: relative;
   width: 100%;
+  height: 100%;
 }
 
 /* ====== STACKING ORDER ====== */
@@ -39,8 +47,8 @@
 }
 
 .card-what { z-index: 11; }
-.card-work { z-index: 12; }
-.card-scanner { z-index: 13; }
+.card-scanner { z-index: 12; }
+.card-work { z-index: 13; }
 .card-process { z-index: 14; }
 .card-benefits { z-index: 15; }
 .card-pricing { z-index: 16; }
@@ -55,4 +63,62 @@
 
 .card.card-faq .cards_wrap__card-stick.last {
   height: auto;
+}
+
+/* ====== PARALLAX COMPONENTS ====== */
+.parallax-section {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.parallax-content {
+  width: 100%;
+  height: 100%;
+  will-change: transform, opacity;
+}
+
+.parallax-element {
+  will-change: transform;
+}
+
+.parallax-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.parallax-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  will-change: transform;
+}
+
+.parallax-text {
+  will-change: transform, opacity;
+}
+
+/* ====== MOBILE OPTIMIZATIONS ====== */
+@media (max-width: 768px) {
+  .card {
+    min-height: auto;
+  }
+  
+  .card.card-hero-tech {
+    min-height: 100svh; /* Use svh for mobile browsers */
+  }
+  
+  /* Reduce parallax effects on mobile for better performance */
+  .parallax-content,
+  .parallax-element,
+  .parallax-image,
+  .parallax-text {
+    will-change: auto;
+  }
 }

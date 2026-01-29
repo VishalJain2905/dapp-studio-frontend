@@ -138,8 +138,7 @@ export function HeroSection() {
         <div className="hero-background">
   <div className={`spline-loader-overlay ${iframeLoaded ? 'hidden' : ''}`} />
   <iframe
-    // src="https://my.spline.design/cybermannequin-K9phjHYuEZmZtOw8pOCwOTSy/?logo=0&ui_loading=0"
-    src="https://my.spline.design/nexbotrobotcharacterconcept-gZvfIbak9q2Fo9QSNrw6NE60/"
+    src="https://my.spline.design/nexbotrobotcharacterconcept-gZvfIbak9q2Fo9QSNrw6NE60/?logo=0&ui_loading=0"
     title="3D Cyber Mannequin"
     loading="lazy"
     onLoad={() => setIframeLoaded(true)}

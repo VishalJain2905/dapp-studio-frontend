@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { Sparkles, Palette, Layout, Code2, Smartphone, Settings } from "lucide-react";
 import "../../styles/our-work.css";
 
@@ -46,11 +46,31 @@ export function OurWorkSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
 
+  // Parallax scroll tracking
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Header parallax - slides up as user scrolls in
+  const headerY = useTransform(scrollYProgress, [0, 0.3], [80, 0]);
+  const headerOpacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
+
+  // Grid parallax - slight upward movement
+  const gridY = useTransform(scrollYProgress, [0.2, 0.5], [60, 0]);
+  const gridOpacity = useTransform(scrollYProgress, [0.15, 0.35], [0, 1]);
+
+  // Subtle depth effect
+  const sectionY = useTransform(scrollYProgress, [0.5, 1], [0, -30]);
+
   return (
     <section ref={sectionRef} className="services-section">
-      <div className="services-container">
-        {/* Header */}
-        <div className="services-header">
+      <motion.div className="services-container" style={{ y: sectionY }}>
+        {/* Header with Parallax */}
+        <motion.div 
+          className="services-header"
+          style={{ y: headerY, opacity: headerOpacity }}
+        >
           <div className="services-header-left">
             <motion.span 
               initial={{ opacity: 0, y: 20 }}
@@ -78,15 +98,18 @@ export function OurWorkSection() {
           >
             Quality-driven design at every level. Our integrated approach helps brands go to market faster with confidence.
           </motion.p>
-        </div>
+        </motion.div>
 
-        {/* Cards Grid */}
-        <div className="services-grid">
+        {/* Cards Grid with Parallax */}
+        <motion.div 
+          className="services-grid"
+          style={{ y: gridY, opacity: gridOpacity }}
+        >
           {serviceItems.map((item, index) => (
-            <ServiceCard key={index} item={item} index={index} />
+            <ServiceCard key={`service-${index}`} item={item} index={index} />
           ))}
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
@@ -96,7 +119,7 @@ interface ServiceCardProps {
   index: number;
 }
 
-const ServiceCard = ({ item, index }: ServiceCardProps) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ item, index }) => {
   const cardRef = useRef(null);
   const isInView = useInView(cardRef, { once: true, amount: 0.2 });
 
