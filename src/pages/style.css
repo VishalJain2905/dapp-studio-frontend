@@ -1,4 +1,5 @@
-/* ====== ONE-PAGE PARALLAX LAYOUT ====== */
+/* ====== ONE-PAGE STACKING SECTIONS LAYOUT ====== */
+/* Sections slide UP and stack on top of each other */
 
 /* Main wrapper */
 .card-wrap {
@@ -7,17 +8,31 @@
   overflow-x: hidden;
 }
 
-/* ====== HERO+TECH CARD - STICKY AT TOP ====== */
+/* ====== HERO - STICKY AT TOP (Gets covered by other sections) ====== */
 .card.card-hero-tech {
   position: sticky;
   top: 0;
   width: 100%;
+  height: 100vh;
   z-index: 1;
+}
+
+/* ====== ALL STACKING SECTIONS ====== */
+.card {
+  position: relative;
+  width: 100%;
   min-height: 100vh;
 }
 
-/* ====== ALL SECTIONS - 100VH ====== */
-.card {
+/* ====== STACKING SECTIONS - Each one is STICKY and covers the previous ====== */
+.card:not(.card-hero-tech) {
+  position: sticky;
+  top: 0;
+  background-color: #000;
+}
+
+/* ====== INNER CONTENT ====== */
+.cards_wrap__card-stick {
   position: relative;
   width: 100%;
   min-height: 100vh;
@@ -27,41 +42,40 @@
   overflow: hidden;
 }
 
-/* ====== INNER CONTENT ====== */
-.cards_wrap__card-stick {
-  position: relative;
-  width: 100%;
-  height: 100%;
+/* ====== Z-INDEX STACKING ORDER ====== */
+/* Higher z-index = covers sections below it */
+.card-hero-tech { z-index: 1; }
+.card-what { z-index: 2; }
+.card-scanner { z-index: 3; }
+.card-work { z-index: 4; }
+.card-process { z-index: 5; }
+.card-benefits { z-index: 6; }
+.card-pricing { z-index: 7; }
+.card-testimonials { z-index: 8; }
+.card-faq { z-index: 9; }
+
+/* ====== SECTION SHADOWS FOR DEPTH ====== */
+.card:not(.card-hero-tech)::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  pointer-events: none;
+  z-index: 100;
 }
 
-/* ====== STACKING ORDER ====== */
-.card-hero-tech { 
-  z-index: 1; 
-}
-
-/* All other cards should be solid and scroll over the hero */
-.card:not(.card-hero-tech) {
-  position: relative;
-  background-color: #000;
-  z-index: 10;
-}
-
-.card-what { z-index: 11; }
-.card-scanner { z-index: 12; }
-.card-work { z-index: 13; }
-.card-process { z-index: 14; }
-.card-benefits { z-index: 15; }
-.card-pricing { z-index: 16; }
-.card-testimonials { z-index: 17; }
-.card-faq { z-index: 100; }
-
-/* ====== FAQ - LAST SECTION ====== */
+/* ====== FAQ - LAST SECTION (Not sticky, scrolls normally) ====== */
 .card.card-faq {
+  position: relative; /* Override sticky for last section */
   min-height: auto;
   overflow: visible;
 }
 
 .card.card-faq .cards_wrap__card-stick.last {
+  min-height: auto;
   height: auto;
 }
 
@@ -104,17 +118,28 @@
   will-change: transform, opacity;
 }
 
-/* ====== MOBILE OPTIMIZATIONS ====== */
+/* ====== MOBILE - Disable stacking for better UX ====== */
 @media (max-width: 768px) {
   .card {
+    position: relative !important;
     min-height: auto;
   }
   
   .card.card-hero-tech {
-    min-height: 100svh; /* Use svh for mobile browsers */
+    position: relative !important;
+    height: auto;
+    min-height: 100svh;
   }
   
-  /* Reduce parallax effects on mobile for better performance */
+  .cards_wrap__card-stick {
+    min-height: auto;
+  }
+  
+  .card:not(.card-hero-tech)::before {
+    display: none;
+  }
+  
+  /* Reduce parallax effects on mobile */
   .parallax-content,
   .parallax-element,
   .parallax-image,

@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Sparkles, Palette, Layout, Code2, Smartphone, Settings } from "lucide-react";
 import "../../styles/our-work.css";
 
@@ -44,71 +44,37 @@ const serviceItems: ServiceItem[] = [
 
 export function OurWorkSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
-
-  // Parallax scroll tracking
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Header parallax - slides up as user scrolls in
-  const headerY = useTransform(scrollYProgress, [0, 0.3], [80, 0]);
-  const headerOpacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
-
-  // Grid parallax - slight upward movement
-  const gridY = useTransform(scrollYProgress, [0.2, 0.5], [60, 0]);
-  const gridOpacity = useTransform(scrollYProgress, [0.15, 0.35], [0, 1]);
-
-  // Subtle depth effect
-  const sectionY = useTransform(scrollYProgress, [0.5, 1], [0, -30]);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
 
   return (
     <section ref={sectionRef} className="services-section">
-      <motion.div className="services-container" style={{ y: sectionY }}>
-        {/* Header with Parallax */}
-        <motion.div 
-          className="services-header"
-          style={{ y: headerY, opacity: headerOpacity }}
-        >
+      {/* ONE animation: Simple fade up for the entire container */}
+      <motion.div 
+        className="services-container"
+        initial={{ opacity: 0, y: 60 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        {/* Header */}
+        <div className="services-header">
           <div className="services-header-left">
-            <motion.span 
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6 }}
-              className="services-label"
-            >
-              [ What we do ]
-            </motion.span>
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: 0.1 }}
-              className="services-title"
-            >
+            <span className="services-label">[ What we do ]</span>
+            <h2 className="services-title">
               We design meaningful not just<br />
               quick impressions
-            </motion.h2>
+            </h2>
           </div>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="services-description"
-          >
+          <p className="services-description">
             Quality-driven design at every level. Our integrated approach helps brands go to market faster with confidence.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
-        {/* Cards Grid with Parallax */}
-        <motion.div 
-          className="services-grid"
-          style={{ y: gridY, opacity: gridOpacity }}
-        >
+        {/* Cards Grid */}
+        <div className="services-grid">
           {serviceItems.map((item, index) => (
-            <ServiceCard key={`service-${index}`} item={item} index={index} />
+            <ServiceCard key={`service-${index}`} item={item} />
           ))}
-        </motion.div>
+        </div>
       </motion.div>
     </section>
   );
@@ -116,21 +82,11 @@ export function OurWorkSection() {
 
 interface ServiceCardProps {
   item: ServiceItem;
-  index: number;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ item, index }) => {
-  const cardRef = useRef(null);
-  const isInView = useInView(cardRef, { once: true, amount: 0.2 });
-
+const ServiceCard: React.FC<ServiceCardProps> = ({ item }) => {
   return (
-    <motion.div
-      ref={cardRef}
-      initial={{ opacity: 0, y: 30 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: [0, 0, 0.25, 1] }}
-      className="service-card"
-    >
+    <div className="service-card">
       {/* Corner Glow Effects */}
       <div className="corner-glow top-left"></div>
       <div className="corner-glow bottom-right"></div>
@@ -145,6 +101,6 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ item, index }) => {
       
       {/* Description */}
       <p className="service-card-description">{item.description}</p>
-    </motion.div>
+    </div>
   );
 };

@@ -1,7 +1,6 @@
 import { useRef } from "react";
-import { motion, useInView, useScroll, useTransform } from "motion/react";
+import { motion, useInView } from "motion/react";
 import { FAQItem } from "../molecules/FAQItem";
-import { fadeUpVariant, staggerContainer, staggerItem } from "../../utils/animations";
 
 const faqData = [
   {
@@ -28,90 +27,37 @@ const faqData = [
 
 export function FAQSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
-
-  // Parallax scroll tracking
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Title parallax
-  const titleY = useTransform(scrollYProgress, [0, 0.3], [60, 0]);
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
-
-  // FAQ items parallax
-  const itemsY = useTransform(scrollYProgress, [0.1, 0.4], [80, 0]);
-  const itemsOpacity = useTransform(scrollYProgress, [0.1, 0.35], [0, 1]);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
 
   return (
     <section ref={sectionRef} className="bg-black py-12 md:py-20 px-4 md:px-20">
+      {/* ONE animation: Simple fade up for the entire container */}
       <motion.div 
         className="max-w-4xl mx-auto"
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        variants={staggerContainer}
+        initial={{ opacity: 0, y: 60 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <motion.h2 
-          variants={fadeUpVariant}
-          className="text-white text-[32px] md:text-[60px] text-center mb-[10px]"
-          style={{ y: titleY, opacity: titleOpacity }}
-        >
+        <h2 className="text-white text-[32px] md:text-[60px] text-center mb-[10px]">
           Still Got Questions?
-        </motion.h2>
+        </h2>
         
-        <motion.p 
-          variants={fadeUpVariant}
-          className="text-[#909090] text-[16px] tracking-[-0.44px] text-center mb-12 md:mb-16 leading-[33px]"
-          style={{ y: titleY, opacity: titleOpacity }}
-        >
+        <p className="text-[#909090] text-[16px] tracking-[-0.44px] text-center mb-12 md:mb-16 leading-[33px]">
           No worries. We've answered the most common stuff below. If it's not here, just reach out.
-        </motion.p>
+        </p>
         
-        {/* FAQ Items with staggered reveal and parallax */}
-        <motion.div 
-          className="space-y-5"
-          style={{ y: itemsY, opacity: itemsOpacity }}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: {
-              opacity: 1,
-              transition: {
-                staggerChildren: 0.1,
-                delayChildren: 0.3
-              }
-            }
-          }}
-        >
+        {/* FAQ Items */}
+        <div className="space-y-5">
           {faqData.map((faq, index) => (
-            <motion.div
-              key={index}
-              variants={{
-                hidden: { 
-                  opacity: 0, 
-                  y: 30,
-                  scale: 0.98
-                },
-                visible: { 
-                  opacity: 1, 
-                  y: 0,
-                  scale: 1,
-                  transition: {
-                    type: "spring",
-                    stiffness: 80,
-                    damping: 15
-                  }
-                }
-              }}
-            >
+            <div key={index}>
               <FAQItem
                 question={faq.question}
                 answer={faq.answer}
                 index={index}
               />
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </motion.div>
     </section>
   );

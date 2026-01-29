@@ -104,14 +104,22 @@ function ProcessVisual() {
 
 export function ProcessSection() {
   const [activeStep, setActiveStep] = useState<string | null>("01");
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
 
   const toggleStep = (id: string) => {
     setActiveStep(activeStep === id ? null : id);
   };
 
   return (
-    <section className="process-section">
-      <div className="process-container">
+    <section ref={sectionRef} className="process-section">
+      {/* ONE animation: Simple fade up for the entire container */}
+      <motion.div 
+        className="process-container"
+        initial={{ opacity: 0, y: 60 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         
         {/* Left Column: Heading & Visual */}
         <div className="process-left-content">
@@ -173,7 +181,7 @@ export function ProcessSection() {
           <ProcessVisual />
         </div>
 
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
-import { useInView } from "motion/react";
+import { motion, useInView } from "motion/react";
+import { InfiniteLogoScroller } from "../molecules/InfiniteLogoScroller";
 import "../../styles/what-we-do.css";
 
 
@@ -29,43 +29,24 @@ const serviceCards = [
 ];
 
 export function WhatWeDoSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
-  
-  // Detection for performance: Is the section in view?
-  const isVisible = useInView(sectionRef, { amount: 0.1 });
-
-  // Parallax scroll tracking
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Parallax transforms - text from left, carousel from right
-  const textX = useTransform(scrollYProgress, [0, 0.3, 0.5], [-100, 0, 0]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
-  
-  const carouselX = useTransform(scrollYProgress, [0, 0.3, 0.5], [100, 0, 0]);
-  const carouselOpacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
-
-  // Subtle vertical parallax for depth
-  const contentY = useTransform(scrollYProgress, [0.5, 1], [0, -50]);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
   return (
     <section ref={sectionRef} className="what-we-do-section">
+      {/* Infinite Logo Scroller at top */}
+      <InfiniteLogoScroller />
+      
+      {/* ONE animation: Simple fade up for the entire container */}
       <motion.div 
         className="wwd-container"
-        style={{ y: contentY }}
+        initial={{ opacity: 0, y: 60 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
         
-        {/* Left Column: Text Content with Parallax */}
-        <motion.div 
-          className="wwd-content"
-          style={{ 
-            x: textX, 
-            opacity: textOpacity 
-          }}
-        >
+        {/* Text Content */}
+        <div className="wwd-content">
           <h2 className="wwd-title">
             Technology built for 
             <br />
@@ -75,19 +56,12 @@ export function WhatWeDoSection() {
             TechVirtue Infotech was started in 2024 by Tarun Bhati. After working across a range of industries and project types, Tarun had repeatedly seen the same issue. Businesses would hire developers who could write code, but were not on the same page about the project's purpose. 
             He wanted to change this dynamic. TechVirtue started as a company that wanted to build solutions through clear communication and only build products that actually help clients. That philosophy is still at the heart of all of our services and all of our product decisions. 
             We believe that good software is built when the business logic is known as clearly as the technology.  
-
           </p> 
-        </motion.div>
+        </div>
 
-        {/* Right Column: 3D Carousel with Parallax */}
-        <motion.div 
-          className="wwd-grid-wrapper"
-          style={{ 
-            x: carouselX, 
-            opacity: carouselOpacity 
-          }}
-        >
-          <div className={`wwd-carousel-inner ${!isVisible ? 'wwd-carousel-paused' : ''}`}>
+        {/* 3D Carousel */}
+        <div className="wwd-grid-wrapper">
+          <div className={`wwd-carousel-inner ${!isInView ? 'wwd-carousel-paused' : ''}`}>
             {serviceCards.map((card, i) => (
               <div 
                 key={card.id} 
@@ -95,7 +69,6 @@ export function WhatWeDoSection() {
                 style={{ "--index": i } as any}
               >
                 <div className="wwd-card">
-                  {/* Content Only */}
                   <div className="wwd-card-content">
                     <h3 className="wwd-card-title">
                       {card.title.split('\n').map((line, i) => (
@@ -113,7 +86,7 @@ export function WhatWeDoSection() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
       </motion.div>
     </section>

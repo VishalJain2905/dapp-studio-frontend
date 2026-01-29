@@ -1,6 +1,5 @@
-import React, { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
-import { fadeLeftVariant, staggerContainer } from "../../utils/animations";
+import React, { useRef } from "react";
+import { motion, useInView } from "motion/react";
 import avatarKai from "../../assets/test.png";
 import avatarLeo from "../../assets/test2.png";
 import avatarNiko from "../../assets/test3.png";
@@ -133,58 +132,31 @@ const TestimonialItem: React.FC<TestimonialItemProps> = ({ name, company, testim
 
 export function TestimonialsSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [scrollComplete, setScrollComplete] = useState(false);
-
-  // Parallax scroll tracking
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Title parallax - slides from left
-  const titleX = useTransform(scrollYProgress, [0, 0.3], [-80, 0]);
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
-
-  // Container parallax
-  const containerY = useTransform(scrollYProgress, [0.1, 0.4], [60, 0]);
-  const containerOpacity = useTransform(scrollYProgress, [0.1, 0.35], [0, 1]);
-
-  useEffect(() => {
-    // Browser handles scrolling naturally - no manual intervention
-  }, []);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
 
   return (
     <section 
       ref={sectionRef}
       className="testimonials-section"
     >
+      {/* ONE animation: Simple fade up for the entire container */}
       <motion.div
-        className="testimonials-container testimonials-stagger-container"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={staggerContainer}
+        className="testimonials-container"
+        initial={{ opacity: 0, y: 60 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <motion.h2
-          variants={fadeLeftVariant}
-          className="testimonials-title testimonials-fade-left"
-          style={{ x: titleX, opacity: titleOpacity }}
-        >
+        <h2 className="testimonials-title">
           Why businesses love<br />
           our web solutions
-        </motion.h2>
+        </h2>
 
-        {/* Testimonials Scroll Container with Parallax */}
-        <motion.div
-          ref={scrollContainerRef}
-          className="testimonials-scroll-container"
-          style={{ y: containerY, opacity: containerOpacity }}
-        >
+        {/* Testimonials Scroll Container */}
+        <div className="testimonials-scroll-container">
           {/* Fade gradient at top */}
           <div className="testimonials-fade-top" />
           
-          {/* Testimonials List - All testimonials with scroll */}
+          {/* Testimonials List */}
           <div className="testimonials-list">
             {testimonials.map((testimonial, index) => (
               <TestimonialItem
@@ -200,7 +172,7 @@ export function TestimonialsSection() {
           
           {/* Fade gradient at bottom */}
           <div className="testimonials-fade-bottom" />
-        </motion.div>
+        </div>
       </motion.div>
     </section>
   );

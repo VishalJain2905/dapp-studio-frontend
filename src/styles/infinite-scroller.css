@@ -1,0 +1,97 @@
+/* ====== INFINITE LOGO SCROLLER ====== */
+
+.infinite-scroller-container {
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+  padding: 40px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+/* Fade edges */
+.infinite-scroller-container::before,
+.infinite-scroller-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.infinite-scroller-container::before {
+  left: 0;
+  background: linear-gradient(to right, #000 0%, transparent 100%);
+}
+
+.infinite-scroller-container::after {
+  right: 0;
+  background: linear-gradient(to left, #000 0%, transparent 100%);
+}
+
+.infinite-scroller-track {
+  display: flex;
+  gap: 60px;
+  animation: scroll-infinite 30s linear infinite;
+  width: max-content;
+}
+
+.infinite-scroller-track:hover {
+  animation-play-state: paused;
+}
+
+.infinite-scroller-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.infinite-scroller-logo {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+  text-transform: uppercase;
+}
+
+.infinite-scroller-item:hover .infinite-scroller-logo {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Infinite scroll animation */
+@keyframes scroll-infinite {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .infinite-scroller-container {
+    padding: 30px 0;
+  }
+  
+  .infinite-scroller-track {
+    gap: 40px;
+    animation-duration: 20s;
+  }
+  
+  .infinite-scroller-logo {
+    font-size: 14px;
+  }
+  
+  .infinite-scroller-container::before,
+  .infinite-scroller-container::after {
+    width: 50px;
+  }
+}

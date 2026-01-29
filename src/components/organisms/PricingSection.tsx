@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion, useInView } from "motion/react";
 import { PricingCard } from "../molecules/PricingCard";
 import "../../styles/pricing-cards.css";
 
@@ -47,62 +47,33 @@ const pricingTiers = [
 
 export function PricingSection() {
   const sectionRef = useRef<HTMLElement>(null);
-
-  // Parallax scroll tracking
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Title parallax - scales up and fades in
-  const titleY = useTransform(scrollYProgress, [0, 0.3], [60, 0]);
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
-  const titleScale = useTransform(scrollYProgress, [0, 0.3], [0.95, 1]);
-
-  // Cards staggered parallax
-  const cardsY = useTransform(scrollYProgress, [0.15, 0.4], [80, 0]);
-  const cardsOpacity = useTransform(scrollYProgress, [0.1, 0.35], [0, 1]);
-
-  // Depth effect on exit
-  const sectionY = useTransform(scrollYProgress, [0.6, 1], [0, -40]);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
 
   return (
     <section ref={sectionRef} className="pricing-section">
+      {/* ONE animation: Simple fade up for the entire container */}
       <motion.div 
         className="pricing-section-container"
-        style={{ y: sectionY }}
+        initial={{ opacity: 0, y: 60 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        {/* Title with Parallax */}
-        <motion.h2 
-          className="pricing-section-title"
-          style={{ y: titleY, opacity: titleOpacity, scale: titleScale }}
-        >
+        {/* Title */}
+        <h2 className="pricing-section-title">
           What it Costs to Build it Right
-        </motion.h2>
+        </h2>
         
         {/* Subtitle */}
-        <motion.div 
-          className="pricing-section-subtitle-container"
-          style={{ y: titleY, opacity: titleOpacity }}
-        >
+        <div className="pricing-section-subtitle-container">
           <p className="pricing-section-subtitle">
             No fluff. Just quality development, clear deliverables, and pricing that reflects real work
           </p>
-        </motion.div>
+        </div>
         
-        {/* Pricing Cards Grid with Parallax */}
-        <motion.div 
-          className="pricing-cards-grid"
-          style={{ y: cardsY, opacity: cardsOpacity }}
-        >
+        {/* Pricing Cards Grid */}
+        <div className="pricing-cards-grid">
           {pricingTiers.map((tier, index) => (
-            <motion.div 
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
-            >
+            <div key={index}>
               <PricingCard
                 title={tier.title}
                 description={tier.description}
@@ -110,9 +81,9 @@ export function PricingSection() {
                 features={tier.features}
                 isPopular={tier.isPopular}
               />
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </motion.div>
     </section>
   );

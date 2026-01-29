@@ -1,6 +1,6 @@
 import imgTexture from "../../assets/optimized/225d51d90ac23d1d315ee056047f3310ff4bc3e6.jpg";
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion, useInView } from "motion/react";
 import "../../styles/benefit-cards.css";
 
 // Background lighting effects components
@@ -199,35 +199,16 @@ function BenefitCard({ title, description, opacity = "dark" }: BenefitCardProps)
 
 export function BenefitsSection() {
   const sectionRef = useRef<HTMLElement>(null);
-
-  // Parallax scroll tracking
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Title parallax
-  const titleY = useTransform(scrollYProgress, [0, 0.3], [80, 0]);
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.25], [0, 1]);
-
-  // Cards grid parallax
-  const cardsY = useTransform(scrollYProgress, [0.1, 0.4], [100, 0]);
-  const cardsOpacity = useTransform(scrollYProgress, [0.1, 0.35], [0, 1]);
-
-  // Background parallax for depth
-  const bgY = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
 
   return (
     <section ref={sectionRef} className="benefits-section">
-      {/* Background lighting effects - with parallax */}
-      <motion.div
-        className="benefits-background"
-        style={{ top: '450px', y: bgY }}
-      >
+      {/* Background lighting effects */}
+      <div className="benefits-background" style={{ top: '450px' }}>
         <Container />
-      </motion.div>
+      </div>
 
-      {/* Texture overlay - static */}
+      {/* Texture overlay */}
       <div className="benefits-texture-overlay">
         <div
           className="benefits-texture-inner"
@@ -237,95 +218,64 @@ export function BenefitsSection() {
         />
       </div>
 
-      {/* Content */}
-      <div className="benefits-content">
-        {/* Title with Parallax */}
-        <motion.h2 
-          className="benefits-title"
-          style={{ y: titleY, opacity: titleOpacity }}
-        >
+      {/* ONE animation: Simple fade up for the entire content */}
+      <motion.div 
+        className="benefits-content"
+        initial={{ opacity: 0, y: 60 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        {/* Title */}
+        <h2 className="benefits-title">
           The key benefits of partnering<br />
           with us for your business<br />
           growth
-        </motion.h2>
+        </h2>
 
-        {/* Cards Grid with Parallax */}
-        <motion.div 
-          className="benefits-cards-grid"
-          style={{ y: cardsY, opacity: cardsOpacity }}
-        >
+        {/* Cards Grid */}
+        <div className="benefits-cards-grid">
           {/* Row 1 */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5, delay: 0 }}
-          >
+          <div>
             <BenefitCard
               title="Increased Productivity"
               description="We build tools, dashboards, and automated systems that streamline your daily operations, helping you and your team work faster and smarter."
             />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
+          </div>
+          <div>
             <BenefitCard
               title="Better Customer Experience"
               description="From sleek UIs to smooth performance, we craft user-first products that boost engagement, reduce bounce rates, and leave a lasting impression."
             />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
+          </div>
+          <div>
             <BenefitCard
               title="24/7 Availablity"
               description="We ensure your platforms are reliable, secure, and up 24/7 with proactive monitoring, fast fixes, and ongoing support when you need it most."
             />
-          </motion.div>
+          </div>
 
           {/* Row 2 */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
+          <div>
             <BenefitCard
               title="Cost Reduction"
               description="Our development approach focuses on clean, efficient code, minimizing overhead, reducing technical debt, and keeping maintenance costs low."
             />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
+          </div>
+          <div>
             <BenefitCard
               title="Why Brand Choose Us"
               description="Custom development that actually delivers from clean UI to scalable Web3 infrastructure, we turn ideas into high-performing products"
               opacity="medium"
             />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-          >
+          </div>
+          <div>
             <BenefitCard
               title="Scalablity & Growth"
               description="We build systems that grow with you, whether you're launching an MVP or scaling to 1M+ users, we ensure performance and structure never hold you back."
             />
-          </motion.div>
-        </motion.div>
-      </div>
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 }
