@@ -134,21 +134,21 @@ export function HeroSection() {
           {/* Mobile Menu */}
           <MobileMenu isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} isLight={isLight} />
 
-          {/* Background Image */}
-        <div className="hero-background">
-  <div className={`spline-loader-overlay ${iframeLoaded ? 'hidden' : ''}`} />
-  <iframe
-    src="https://my.spline.design/nexbotrobotcharacterconcept-gZvfIbak9q2Fo9QSNrw6NE60/?logo=0&ui_loading=0"
-    title="3D Cyber Mannequin"
-    loading="lazy"
-    onLoad={() => setIframeLoaded(true)}
-    className="hero-iframe"
-    style={{ 
-      willChange: 'transform',
-      containIntrinsicSize: '100% 100%'
-    }}
-  />
-</div>
+          {/* Background - Spline 3D */}
+          <div className="hero-background">
+            <div className={`spline-loader-overlay ${iframeLoaded ? 'hidden' : ''}`} />
+            <iframe
+              src="https://my.spline.design/nexbotrobotcharacterconcept-gZvfIbak9q2Fo9QSNrw6NE60/?logo=0&ui_loading=0"
+              title="3D Cyber Mannequin"
+              loading="lazy"
+              onLoad={() => setIframeLoaded(true)}
+              className="hero-iframe"
+              style={{ 
+                willChange: 'transform',
+                containIntrinsicSize: '100% 100%'
+              }}
+            />
+          </div>
 
           
 

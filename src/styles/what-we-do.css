@@ -96,6 +96,12 @@
   overflow: visible;
 }
 
+/* Pause animation on hover or when off-screen */
+.wwd-carousel-inner:hover,
+.wwd-carousel-paused {
+  animation-play-state: paused;
+}
+
 .wwd-carousel-inner {
   position: relative;
   width: 260px;
@@ -105,12 +111,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-/* Pause animation on hover or when off-screen */
-.wwd-carousel-inner:hover,
-.wwd-carousel-paused {
-  animation-play-state: paused;
+  will-change: transform; /* Performance optimization */
 }
 
 .wwd-card-wrapper {
@@ -120,6 +121,7 @@
   transform-style: preserve-3d;
   backface-visibility: visible;
   transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+  will-change: transform; /* Performance optimization */
 }
 
 /* 3D Circular Positioning - Tighter Orbit */
@@ -141,8 +143,8 @@
   justify-content: center;
   padding: 2.5rem 1.5rem;
   transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(20px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6); /* Reduced shadow spread */
+  backdrop-filter: blur(10px); /* Reduced blur radius */
 }
 
 .wwd-card:hover {
@@ -150,8 +152,8 @@
   background: #050505;
   transform: translateY(-5px);
   box-shadow: 
-    0 30px 60px rgba(0, 0, 0, 1),
-    0 0 1px 1px rgba(255, 255, 255, 0.1); /* Subtle white ring */
+    0 20px 40px rgba(0, 0, 0, 0.8), /* Reduced shadow */
+    0 0 1px 1px rgba(255, 255, 255, 0.1); 
 }
 
 /* Card Visual Area - Hidden */

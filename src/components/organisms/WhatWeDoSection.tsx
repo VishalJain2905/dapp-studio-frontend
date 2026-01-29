@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { InfiniteLogoScroller } from "../molecules/InfiniteLogoScroller";
+import { TypewriterEffect } from "../atoms/TypewriterEffect";
 import "../../styles/what-we-do.css";
-
 
 // Service card data (Text Only)
 const serviceCards = [
@@ -34,7 +34,7 @@ export function WhatWeDoSection() {
 
   return (
     <section ref={sectionRef} className="what-we-do-section">
-      {/* Infinite Logo Scroller at top */}
+
       <InfiniteLogoScroller />
       
       {/* ONE animation: Simple fade up for the entire container */}
@@ -42,15 +42,16 @@ export function WhatWeDoSection() {
         className="wwd-container"
         initial={{ opacity: 0, y: 60 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        transition={{ duration: 2.5, ease: "easeIn" }}
       >
         
         {/* Text Content */}
         <div className="wwd-content">
           <h2 className="wwd-title">
-            Technology built for 
-            <br />
-            clarity and trust 
+            <div className="flex flex-col items-left">
+              <TypewriterEffect text="Technology built for" cursorColor="transparent" speed={0.05} delay={1} firstWordColor="#3179d6ff" />
+              <TypewriterEffect text="clarity and trust" cursorColor="#fff" speed={0.05} delay={1.5} />
+            </div>
           </h2>
           <p className="wwd-description">
             TechVirtue Infotech was started in 2024 by Tarun Bhati. After working across a range of industries and project types, Tarun had repeatedly seen the same issue. Businesses would hire developers who could write code, but were not on the same page about the project's purpose. 
